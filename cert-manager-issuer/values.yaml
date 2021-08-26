@@ -1,0 +1,15 @@
+# A list of issuers that should be deployed
+issuers: 
+# - name: letsencrypt-prod
+#   enabled: true
+#   kind: ClusterIssuer
+
+#   email: <test_email>
+
+#   server: https://acme-v02.api.letsencrypt.org/directory
+#   privateKeySecretRef: letsencrypt
+
+#   solvers:
+#   - http01:
+#       ingress:
+#         class: traefik
