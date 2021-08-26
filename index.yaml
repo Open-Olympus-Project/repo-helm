@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  lethe:
+  - apiVersion: v2
+    created: "2021-08-26T14:46:08.6277613+02:00"
+    description: A Helm chart that is used to build secret stores and external secrets
+    digest: 70031591664aab5ff04edef907770dc24fdbf7cfc296a03071b933952e50fa17
+    name: lethe
+    type: application
+    urls:
+    - https://Open-olympus-project.github.io/repo-helm/lethe-0.0.1.tgz
+    version: 0.0.1
+generated: "2021-08-26T14:46:08.6242663+02:00"
