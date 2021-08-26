@@ -3,7 +3,7 @@
 # Only Used for the CT Lint Stage
 remote: origin
 chart-dirs:
-  - ./
+  - charts
 chart-repos:
   - olympus=https://open-olympus-project.github.io/repo-helm/
   - minio=https://helm.min.io/
