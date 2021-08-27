@@ -1,6 +1,0 @@
-dependencies:
-- name: lethe
-  repository: https://open-olympus-project.github.io/repo-helm/
-  version: 0.0.2
-digest: sha256:9f8cd325ef016c11aff745c405e5878a675ac6d6f275109b3242e53a220b651c
-generated: "2021-08-27T10:06:41.6325634+02:00"
