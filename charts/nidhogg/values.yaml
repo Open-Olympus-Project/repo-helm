@@ -5,7 +5,7 @@ nidhogg:
     containerRegistryUrl: serviceacrpoc.azurecr.io
     ingress:
       hosts:
-        - host: service-poc.westeurope.cloudapp.azure.com #This is what argocd will run on
+        - host: service-poc.westeurope.cloudapp.azure.com # This is what argocd will run on
           loadBalancerIP: 20.82.41.255
           name: ""
         - host: service-vault-poc.westeurope.cloudapp.azure.com
