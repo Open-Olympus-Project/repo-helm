@@ -7,10 +7,7 @@ chart-dirs:
   - charts
 chart-repos:
   - olympus=https://open-olympus-project.github.io/repo-helm/
-  - minio=https://helm.min.io/
-  - dandydeveloper=https://dandydeveloper.github.io/charts/
   - stable=https://charts.helm.sh/stable
-  - incubator=https://charts.helm.sh/incubator
 helm-extra-args: "--timeout 600s"
 validate-chart-schema: false
 validate-maintainers: true
