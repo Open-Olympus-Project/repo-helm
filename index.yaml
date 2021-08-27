@@ -208,6 +208,21 @@ entries:
     version: v0.2.0
   traefik-forward-auth:
   - apiVersion: v2
+    created: "2021-08-27T08:31:08.163083571Z"
+    dependencies:
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.0.2
+    description: A Helm chart for Kubernetes
+    digest: fe21ef9b9d59cd6174e8fcc604c8e943636510b8bfc8289266cbd19a6297faf1
+    maintainers:
+    - name: MadsHT
+    name: traefik-forward-auth
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/traefik-forward-auth-0.0.2/traefik-forward-auth-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     created: "2021-08-27T08:03:53.379805181Z"
     description: A Helm chart for Kubernetes
     digest: 00eb313ed09c2442cc828c238cc735462de90eb2c830664c8505f91ed9de730f
@@ -230,4 +245,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/vault-0.0.1/vault-0.0.1.tgz
     version: 0.0.1
-generated: "2021-08-27T08:03:53.628007595Z"
+generated: "2021-08-27T08:31:08.163095671Z"
