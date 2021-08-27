@@ -11,20 +11,20 @@ ingress:
   # className: ingress-traefik
 
 applications:
-  argo-workflows:         true
-  argo-events:            true
-  argo-events-setup:      true
-  argo-events-github:     false
-  argo-events-azure:      false
-  cert-manager:           true
-  cert-manager-issuer:    true
-  external-secrets:       true
-  grafana:                true
-  traefik:                true
-  traefik-forward-auth:   true
-  jaeger-operator:        true
-  loki:                   true
-  minio-operator:         true
-  prometheus:             true
-  thanos:                 true
-  vault:                  true
+  argo-workflows: true
+  argo-events: true
+  argo-events-setup: true
+  argo-events-github: false
+  argo-events-azure: false
+  cert-manager: true
+  cert-manager-issuer: true
+  external-secrets: true
+  grafana: true
+  traefik: true
+  traefik-forward-auth: true
+  jaeger-operator: true
+  loki: true
+  minio-operator: true
+  prometheus: true
+  thanos: true
+  vault: true
