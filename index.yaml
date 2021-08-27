@@ -158,6 +158,22 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/minio-operator-0.0.1/minio-operator-0.0.1.tgz
     version: 0.0.1
+  nidhogg:
+  - apiVersion: v2
+    created: "2021-08-27T09:10:09.961341562Z"
+    dependencies:
+    - name: nidhogg
+      repository: https://distributed-technologies.github.io/helm-repository/
+      version: v1.0.0
+    description: A Helm chart for nidhogg values and dependencies
+    digest: 2f88cc0128bad845affc2b4837d7bb40a9fd0db3060bd55b450bd98c67818e06
+    maintainers:
+    - name: MadsHT
+    name: nidhogg
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/nidhogg-v1.0.0/nidhogg-v1.0.0.tgz
+    version: v1.0.0
   prometheus:
   - apiVersion: v2
     appVersion: .16.0
@@ -245,4 +261,20 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/vault-0.0.1/vault-0.0.1.tgz
     version: 0.0.1
-generated: "2021-08-27T08:31:08.163095671Z"
+  yggdrasil:
+  - apiVersion: v2
+    created: "2021-08-27T09:10:10.129106469Z"
+    dependencies:
+    - name: lightvessel
+      repository: https://distributed-technologies.github.io/helm-repository/
+      version: v0.1.6
+    description: A Helm chart for deploying services and applications
+    digest: 1d85d5ead2e3d8c31b4e4a1814d851c8b327e9da300c1c796d276a8fdb859a03
+    maintainers:
+    - name: MadsHT
+    name: yggdrasil
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
+    version: v1.0.0
+generated: "2021-08-27T09:10:10.12912227Z"
