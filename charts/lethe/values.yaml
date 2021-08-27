@@ -25,9 +25,9 @@ secrets:
   - name: foobar-secret
 
     # SecretStoreRef defines which SecretStore to use when fetching the secret data
-    secretStore:
-      backend: foobar-secret-store
-      kind: SecretStore # or ClusterSecretStore
+    secretStore: {}
+      # backend: foobar-secret-store
+      # kind: SecretStore # or ClusterSecretStore
 
     # RefreshInterval is the amount of time before the values reading again from the SecretStore provider
     # Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h" (from time.ParseDuration)
