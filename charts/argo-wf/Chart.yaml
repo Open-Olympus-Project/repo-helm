@@ -1,6 +1,6 @@
 apiVersion: v2
 name: argo-wf
-description: A Helm chart for Kubernetes
+description: A proxy chart for argo-workflows
 type: application
 version: 0.1.1
 
@@ -13,4 +13,4 @@ dependencies:
   repository: "https://argoproj.github.io/argo-helm"
 - name: lethe
   version: "0.0.2"
-  repository: "https://open-olympus-project.github.io/repo-helm/"
+  repository: "https://open-olympus-project.github.io/repo-helm"
