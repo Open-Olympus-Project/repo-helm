@@ -1,0 +1,22 @@
+loki-stack:
+  loki:
+    config:
+      # https://github.com/grafana/helm-charts/pull/542
+      schema_config:
+        configs:
+        - from: 2020-05-15
+          store: azure
+          object_store: azure
+          schema: v11
+          index:
+            prefix: loki_index
+            period: 0
+      storage_config:
+        azure:
+          container_name: "loki"
+          account_name: "<sa-name>"
+          account_key: "<sa-key>"
+
+      table_manager:
+        retention_deletes_enabled: true
+        retention_period: 336h

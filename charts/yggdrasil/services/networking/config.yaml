@@ -1,0 +1,57 @@
+name: networking
+clusterService: true
+namespace: networking
+description: networking services like ingress, cert-manager.
+
+
+project:
+  name: networking
+  server: https://kubernetes.default.svc
+  sourceRepos:
+    - '*'
+  destinations: 
+    - namespace: kube-system
+      server: https://kubernetes.default.svc
+    - namespace: nidhogg
+      server: https://kubernetes.default.svc
+
+apps:
+  - name: traefik
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/networking-traefik.git"
+      targetRevision: main
+      path: traefik
+      valuesFile: "traefik.yaml"
+  - name: cert-manager
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/k8s-certmanager.git"
+      targetRevision: dependency
+      path: cert-manager
+      valuesFile: "cert-manager.yaml"
+  - name: cert-manager-issuer
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/k8s-certmanager.git"
+      targetRevision: dependency
+      path: cert-manager-issuer
+      valuesFile: "cert-manager-issuer.yaml"
+  - name: traefik-forward-auth
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/networking-traefik.git"
+      targetRevision: main
+      path: traefik-forward-auth
+      valuesFile: "traefik-forward-auth.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      host: service-auth-poc.westeurope.cloudapp.azure.com
+      routes:
+      - kind: Rule
+        match: {}
+        services:
+          - name: traefik-forward-auth-service
+            port: 4181
+        middlewares:
+          - name: auth
+            namespace: networking
+      certificate:
+        enabled: true

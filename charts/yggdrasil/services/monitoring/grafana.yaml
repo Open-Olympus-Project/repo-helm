@@ -1,0 +1,39 @@
+grafana:
+  grafana.ini:
+    server:
+      #TODO HOST URL
+      root_url: https://service-poc.westeurope.cloudapp.azure.com/grafana
+    auth.proxy:
+      enabled: true
+      header_name: X-Forwarded-User
+      header_property: email
+      auto_sign_up: true
+      sync_tll: 60
+      headers: Groups:X-Forwarded-Role
+
+    
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - name: Prometheus
+          type: prometheus
+          url: http://prometheus-server.monitoring
+          access: proxy
+          isDefault: true
+          jsonData:
+            timeInterval: '1m'
+        - name: Loki
+          type: loki
+          url: http://loki.monitoring:3100
+          access: proxy
+          isDefault: false
+          jsonData:
+            timeInterval: '1m'
+        # - name: Loki-prod
+        #   type: loki
+        #   url: https://dp-prod.westeurope.cloudapp.azure.com/loki
+        #   access: proxy
+        #   isDefault: false
+        #   jsonData:
+        #     timeInterval: '1m'
