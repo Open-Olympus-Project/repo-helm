@@ -17,6 +17,24 @@ entries:
     version: 0.1.0
   argo-wf:
   - apiVersion: v2
+    created: "2021-08-27T10:34:54.155369681Z"
+    dependencies:
+    - name: argo-workflows
+      repository: https://argoproj.github.io/argo-helm
+      version: 0.4.1
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm
+      version: 0.0.2
+    description: A proxy chart for argo-workflows
+    digest: 9694248d79c4c77bbdb28c4a85152b871b5c4e0971af43221cb525f6986c5f41
+    maintainers:
+    - name: MadsHT
+    name: argo-wf
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/argo-wf-0.1.1/argo-wf-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: 1.16.10
     created: "2021-08-27T08:03:51.87322638Z"
     dependencies:
@@ -176,6 +194,28 @@ entries:
     version: v1.0.0
   prometheus:
   - apiVersion: v2
+    created: "2021-08-27T10:34:54.298511503Z"
+    dependencies:
+    - name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 14.6.0
+    - condition: standalonePushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.10.1
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.0.2
+    description: A Helm chart for Kubernetes
+    digest: 4ec2be652783f1713a9046e59b4973225f47b6c1ea6e5e4caaf37211848a7e3f
+    maintainers:
+    - name: MadsHT
+    name: prometheus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/prometheus-0.1.1/prometheus-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: .16.0
     created: "2021-08-27T08:03:53.102978908Z"
     dependencies:
@@ -194,6 +234,24 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/prometheus-0.1.0/prometheus-0.1.0.tgz
     version: 0.1.0
   thanos:
+  - apiVersion: v2
+    created: "2021-08-27T10:34:54.415869114Z"
+    dependencies:
+    - name: thanos
+      repository: https://kubernetes-charts.banzaicloud.com
+      version: 0.4.5
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.0.2
+    description: A proxy Helm chart for thanos
+    digest: 3b6ebb2ab5d7c2768c54276d050580b98b832fb4c5027abfe0dc20b6fe0c6502
+    maintainers:
+    - name: MadsHT
+    name: thanos
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/thanos-0.1.1/thanos-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2021-08-27T08:03:53.239518221Z"
@@ -277,4 +335,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-08-27T09:10:10.12912227Z"
+generated: "2021-08-27T10:34:54.415891415Z"
