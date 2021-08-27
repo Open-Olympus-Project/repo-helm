@@ -8,30 +8,73 @@ saName: traefik
 
 deployment:
   env:
-  - name: PROVIDERS_OIDC_ISSUER_URL
-    valueFrom:
-      secretKeyRef:
+    - name: PROVIDERS_OIDC_ISSUER_URL
+      valueFrom:
+        secretKeyRef:
           name: sso-secret
           key: issuerurl
-  - name: PROVIDERS_OIDC_CLIENT_ID
-    valueFrom:
-      secretKeyRef:
+    - name: PROVIDERS_OIDC_CLIENT_ID
+      valueFrom:
+        secretKeyRef:
           name: sso-secret
           key: clientid
-  - name: PROVIDERS_OIDC_CLIENT_SECRET
-    valueFrom:
-      secretKeyRef:
+    - name: PROVIDERS_OIDC_CLIENT_SECRET
+      valueFrom:
+        secretKeyRef:
           name: sso-secret
           key: clientsecret
-  - name: SECRET
-    valueFrom:
-      secretKeyRef:
+    - name: SECRET
+      valueFrom:
+        secretKeyRef:
           name: sso-secret
           key: jwtsecret
 
 service:
   port: 4181
-  targetPort: 4181 
+  targetPort: 4181
 
 middleware:
   name: auth
+
+lethe:
+  secretStores:
+    - name: sso-secret-store
+      providers:
+        vault:
+          server: "http://vault.tooling.svc:8200"
+          path: "k8s"
+          version: "v2"
+          auth:
+            # Authenticate against Vault using a Kubernetes ServiceAccount
+            # token stored in a Secret.
+            # https://www.vaultproject.io/docs/auth/kubernetes
+            kubernetes:
+              # Path where the Kubernetes authentication backend is mounted in Vault
+              mountPath: "kubernetes"
+              # A required field containing the Vault Role to assume.
+              role: "k8s-secrets"
+
+  secrets:
+    - name: sso-secret
+      secretStore:
+        backend: ss-secret-store
+        kind: SecretStore
+      target:
+        name: sso-secret
+      data:
+        - secretKey: issuerurl
+          remoteRef:
+            key: secrets/sso
+            property: issuerurl
+        - secretKey: clientid
+          remoteRef:
+            key: secrets/sso
+            property: clientid
+        - secretKey: clientsecret
+          remoteRef:
+            key: secrets/sso
+            property: clientsecret
+        - secretKey: jwtsecret
+          remoteRef:
+            key: secrets/sso
+            property: jwtsecret
