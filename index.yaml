@@ -1,6 +1,117 @@
 apiVersion: v1
 entries:
+  argo-events:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-08-27T08:03:51.756482915Z"
+    dependencies:
+    - name: argo-events
+      repository: https://argoproj.github.io/argo-helm
+      version: 1.4.0
+    description: A Helm chart for Kubernetes
+    digest: 1e78f099ce38f6fc9fc4f4e3979a993a45fc478d02828ff7bbfaba39e94bf41e
+    name: argo-events
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/argo-events-0.1.0/argo-events-0.1.0.tgz
+    version: 0.1.0
+  argo-wf:
+  - apiVersion: v2
+    appVersion: 1.16.10
+    created: "2021-08-27T08:03:51.87322638Z"
+    dependencies:
+    - name: argo-workflows
+      repository: https://argoproj.github.io/argo-helm
+      version: 0.4.1
+    description: A Helm chart for Kubernetes
+    digest: 3229b140563715005b98be1979ea20545d52498f7406e3bff506b1245b61c337
+    name: argo-wf
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/argo-wf-0.1.0/argo-wf-0.1.0.tgz
+    version: 0.1.0
+  cert-manager:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-08-27T08:03:52.019299113Z"
+    dependencies:
+    - name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.3.1
+    description: A Helm chart for Kubernetes
+    digest: bafc53cfdf5998e920094da81a72339b41675cfb6deb3763e108301c72b9493f
+    name: cert-manager
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/cert-manager-0.1.0/cert-manager-0.1.0.tgz
+    version: 0.1.0
+  cert-manager-issuer:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-08-27T08:03:52.123745223Z"
+    description: A Helm chart for Kubernetes
+    digest: 675dff7f678dd5de9331add0354acb7665cd6dcdb789dcf572c20720ec28289a
+    name: cert-manager-issuer
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/cert-manager-issuer-0.1.0/cert-manager-issuer-0.1.0.tgz
+    version: 0.1.0
+  external-secrets:
+  - apiVersion: v2
+    created: "2021-08-27T08:03:52.255129571Z"
+    dependencies:
+    - name: external-secrets
+      repository: https://charts.external-secrets.io
+      version: 0.3.3
+    description: A Helm chart that makes a dependency to kubernetes-external-secrets
+    digest: e12c132ed32d8375dc2e4ae40eb8b5ed7e0cdbe328766fe4b7bf1558f68da584
+    name: external-secrets
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/external-secrets-0.0.1/external-secrets-0.0.1.tgz
+    version: 0.0.1
+  grafana:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-08-27T08:03:52.397072052Z"
+    dependencies:
+    - name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 5.6.5
+    description: A Helm chart for Kubernetes
+    digest: 1fc48e078893df06ec6d35317007e2059ab0e3eb632966ef85a4b7522a329955
+    name: grafana
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/grafana-0.1.0/grafana-0.1.0.tgz
+    version: 0.1.0
+  jaeger-operator:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-08-27T08:03:52.532460751Z"
+    dependencies:
+    - name: jaeger-operator
+      repository: https://jaegertracing.github.io/helm-charts
+      version: 2.21.0
+    description: A Helm chart for Kubernetes
+    digest: 39fe81809eca133bee7991b234693f2d6549858ef95a5e172185034440ca0c25
+    name: jaeger-operator
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/jaeger-operator-0.1.0/jaeger-operator-0.1.0.tgz
+    version: 0.1.0
   lethe:
+  - apiVersion: v2
+    created: "2021-08-27T08:03:52.66157167Z"
+    description: A Helm chart that is used to build secret stores and external secrets.
+    digest: 7fab30a2ba6ac7a60fe1375c7164f0061076ec8a2b15f0c2ace679ffefc54ea1
+    maintainers:
+    - name: MadsHT
+    name: lethe
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/lethe-0.0.2/lethe-0.0.2.tgz
+    version: 0.0.2
   - apiVersion: v2
     created: "2021-08-26T16:09:11.0194222+02:00"
     description: A Helm chart that is used to build secret stores and external secrets.
@@ -10,4 +121,113 @@ entries:
     urls:
     - https://open-olympus-project.github.io/repo-helm/lethe-0.0.1.tgz
     version: 0.0.1
-generated: "2021-08-26T16:09:11.0152087+02:00"
+  loki-stack:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2021-08-27T08:03:52.803543152Z"
+    dependencies:
+    - condition: loki.enabled
+      name: loki
+      repository: https://grafana.github.io/helm-charts
+      version: ^2.6.0
+    - condition: promtail.enabled
+      name: promtail
+      repository: https://grafana.github.io/helm-charts
+      version: ^3.7.0
+    description: A Helm chart that gives loki and promtail.
+    digest: 4f02395358e32d49d76777fa95de01dc02aa66357f5771aa70d4d447290cc1fc
+    name: loki-stack
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/loki-stack-0.0.1/loki-stack-0.0.1.tgz
+    version: 0.0.1
+  minio-operator:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2021-08-27T08:03:52.937835636Z"
+    dependencies:
+    - name: minio-operator
+      repository: https://operator.min.io/
+      tags:
+      - storage
+      version: 4.1.8
+    description: A Helm chart for Kubernetes
+    digest: 905ba96d9e47a1bf82766836a015fa686aeffaaa0a19941d136f88ce4cc8de58
+    name: minio-operator
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/minio-operator-0.0.1/minio-operator-0.0.1.tgz
+    version: 0.0.1
+  prometheus:
+  - apiVersion: v2
+    appVersion: .16.0
+    created: "2021-08-27T08:03:53.102978908Z"
+    dependencies:
+    - name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 14.6.0
+    - condition: standalonePushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.10.1
+    description: A Helm chart for Kubernetes
+    digest: ab08078063124c9e924e6b13765e1380efc719b6004f347dabb6af571293fa6b
+    name: prometheus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/prometheus-0.1.0/prometheus-0.1.0.tgz
+    version: 0.1.0
+  thanos:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-08-27T08:03:53.239518221Z"
+    dependencies:
+    - name: thanos
+      repository: https://kubernetes-charts.banzaicloud.com
+      version: 0.4.5
+    description: A Helm chart for Kubernetes
+    digest: 64b39344c15e64e451725d013f1337fa5a2ac11be38d6dddfb4faa75a60d7c76
+    name: thanos
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/thanos-0.1.0/thanos-0.1.0.tgz
+    version: 0.1.0
+  traefik:
+  - apiVersion: v2
+    created: "2021-08-27T08:03:53.509084303Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 9.19.0
+    description: A Helm chart for setting up Traefik as ingress controller for Kubernetes
+    digest: 9978db87df810192ecde4c4c0e89d814a790d851820e01159dbe29f36cb280a8
+    name: traefik
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/traefik-v0.2.0/traefik-v0.2.0.tgz
+    version: v0.2.0
+  traefik-forward-auth:
+  - apiVersion: v2
+    created: "2021-08-27T08:03:53.379805181Z"
+    description: A Helm chart for Kubernetes
+    digest: 00eb313ed09c2442cc828c238cc735462de90eb2c830664c8505f91ed9de730f
+    name: traefik-forward-auth
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/traefik-forward-auth-0.0.1/traefik-forward-auth-0.0.1.tgz
+    version: 0.0.1
+  vault:
+  - apiVersion: v2
+    created: "2021-08-27T08:03:53.627946394Z"
+    dependencies:
+    - name: vault
+      repository: https://helm.releases.hashicorp.com
+      version: 0.13.0
+    description: A Helm chart for Kubernetes
+    digest: 3d8fd924ec3347d4df8ec51d0ddcb8fb2ca2ef36a7a9338943dbfe4dbb7dfa12
+    name: vault
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/vault-0.0.1/vault-0.0.1.tgz
+    version: 0.0.1
+generated: "2021-08-27T08:03:53.628007595Z"
