@@ -1,0 +1,83 @@
+name: tooling
+clusterService: true
+namespace: tooling
+description: Tooling services Argo WF, Harbor.
+
+project:
+  name: tooling
+  server: https://kubernetes.default.svc
+  sourceRepos:
+    - '*'
+  destinations:
+  - namespace: argo-events
+    server: https://kubernetes.default.svc
+
+
+apps:
+  - name: argo-workflows
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-argo-wf.git"
+      targetRevision: dependency
+      path: argo-wf
+      valuesFile: "argowf.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      host: service-poc.westeurope.cloudapp.azure.com
+      routes:
+      - kind: Rule
+        match: PathPrefix(`/argowf`)
+        services:
+          - name: argo-workflows-server
+            port: 2746
+        middlewares:
+          - name: argo-stripprefix
+          - name: auth
+            namespace: networking
+      middlewares:
+      - name: argo-stripprefix
+        spec: 
+          stripPrefix:
+            prefixes:
+              - /argowf              
+      certificate:
+        enabled: true
+
+  - name: argo-events
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-argo-events.git"
+      targetRevision: dependency
+      path: argo-events
+      valuesFile: "argo-events.yaml"
+  - name: vault
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-vault.git"
+      targetRevision: vault-init-job
+      path: vault
+      valuesFile: "vault.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      host: service-vault-poc.westeurope.cloudapp.azure.com
+      routes:
+      - kind: Rule
+        match: PathPrefix(`/`)
+        services:
+          - name: vault-ui
+            port: 8200
+      certificate:
+        enabled: true
+
+  - name: external-secrets
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-external-secrets.git"
+      targetRevision: operator
+      path: external-secrets
+      valuesFile: "external-secrets.yaml"
+      
+  - name: minio-operator
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-minio-operator.git"
+      targetRevision: main
+      path: minio-operator
+      valuesFile: "minio-operator.yaml"

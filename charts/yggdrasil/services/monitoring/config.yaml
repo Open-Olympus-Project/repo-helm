@@ -1,0 +1,114 @@
+name: monitoring
+clusterService: true
+namespace: monitoring
+description: All the monitoring apps, including but not limited to prometheus, grafana, thanos, loki. 
+
+project:
+  name: monitoring
+  server: https://kubernetes.default.svc
+  sourceRepos:
+    - '*'
+  destinations: 
+    - namespace: kube-system
+      server: https://kubernetes.default.svc
+    - namespace: rook-ceph
+      server: https://kubernetes.default.svc
+    
+apps:
+  - name: prometheus
+    source:
+      repoURL: 'https://github.com/Open-Olympus-Project/tooling-prometheus.git'
+      targetRevision: dependency
+      path: prometheus
+      valuesFile: "prometheus.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      host: service-poc.westeurope.cloudapp.azure.com
+      routes:
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/alertmanager`)
+        services:
+          - name: prometheus-alertmanager
+            port: 80
+        middlewares:
+          - name: auth
+            namespace: networking
+      certificate:
+        enabled: trues
+
+  - name: thanos
+    source:
+      repoURL: 'https://github.com/Open-Olympus-Project/tooling-thanos.git'
+      # standard targetRevision is HEAD
+      targetRevision: dependency
+      # path to Helm chart in repo. Should be . if Helm chart is in root. 
+      path: thanos
+      # filename of values file that is local right next to this config.yaml file
+      valuesFile: "thanos.yaml"
+  - name: grafana
+    source:
+      repoURL: 'https://github.com/Open-Olympus-Project/tooling-grafana.git'
+      # standard targetRevision is HEAD
+      targetRevision: dependency
+      # path to Helm chart in repo. Should be . if Helm chart is in root. 
+      path: grafana
+      # filename of values file that is local right next to this config.yaml file
+      valuesFile: "grafana.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      host: service-poc.westeurope.cloudapp.azure.com
+      routes:
+      - kind: Rule
+        match: PathPrefix(`/grafana`)
+        services:
+          - name: grafana
+            port: 80
+        middlewares:
+          - name: auth
+            namespace: networking
+          - name: grafana-stripprefix
+      middlewares:
+      - name: grafana-stripprefix
+        spec: 
+          stripPrefix:
+            prefixes:
+              - /grafana
+      certificate:
+        enabled: true
+
+  - name: loki
+    source:
+      repoURL: 'https://github.com/Open-Olympus-Project/tooling-loki.git'
+      # standard targetRevision is HEAD
+      targetRevision: dependency
+      # path to Helm chart in repo. Should be . if Helm chart is in root. 
+      path: loki
+      # filename of values file that is local right next to this config.yaml file
+      valuesFile: "loki.yaml"
+  - name: jaeger-operator
+    source:
+      repoURL: 'https://github.com/Open-Olympus-Project/tooling-jaeger-operator.git'
+      # standard targetRevision is HEAD
+      targetRevision: dependency
+      # path to Helm chart in repo. Should be . if Helm chart is in root. 
+      path: jaeger-operator
+      # filename of values file that is local right next to this config.yaml file
+      valuesFile: "jaeger-operator.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      host: service-poc.westeurope.cloudapp.azure.com
+      routes:
+      - kind: Rule
+        match: PathPrefix(`/jaeger`)
+        services:
+          - name: jaeger-operator-jaeger-query
+            port: 16686
+        middlewares:
+          - name: auth
+            namespace: networking
+      certificate:
+        enabled: true
