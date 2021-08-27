@@ -1,6 +1,6 @@
 secretStores:
   - name: foobar-secret-store
-  
+
     # provider field contains the configuration to access the provider
     # which contains the secret exactly one provider must be configured.
     providers:
@@ -64,7 +64,7 @@ secrets:
         #   name: foobar
         #   items:
         #   - key: foobar.yaml
-    
+
     # Data defines the connection between the Kubernetes Secret keys and the Provider data
     data: {}
       # - secretKey: foo
