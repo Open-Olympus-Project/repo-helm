@@ -42,7 +42,7 @@ lethe:
         - secretKey: saName
           remoteRef:
             key: secrets/sa-metrics
-            property: sa-name  
+            property: sa-name
         - secretKey: saKey
           remoteRef:
             key: secrets/sa-metrics
