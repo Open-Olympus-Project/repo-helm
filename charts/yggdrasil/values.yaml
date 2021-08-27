@@ -1,5 +1,3 @@
-#ingressDomain: dev.garagen
-
 ingress:
   hosts:
     - host: <host1>
