@@ -5,3 +5,5 @@ description: A Helm chart that is used to build secret stores and external secre
 type: application
 
 version: 0.0.2
+maintainers:
+  - name: Mads H. Thyssen
