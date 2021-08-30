@@ -1,6 +1,51 @@
+argo-workflows:
+  sso:
+    clientId:
+      name: argowf-sso
+      key: clientid
+    clientSecret:
+      name: argowf-sso
+      key: clientsecret
+    rbac:
+      enable: true
+    scopes:
+      - groups
+
+  server:
+    secure: false
+    extraArgs:
+      - --auth-mode=sso
+  controller:
+    containerRuntimeExecutor: pns
+    workflowDefaults:
+      spec:
+        serviceAccountName: argo-workflow
+  workflow:
+    serviceAccount:
+      create: true
+      name: "argo-workflow"
+    rbac:
+      create: true
+  useDefaultArtifactRepo: true
+  artifactRepository:
+    # archiveLogs will archive the main container logs as an artifact
+    archiveLogs: true
+    s3:
+      # Note the `key` attribute is not the actual secret, it's the PATH to
+      # the contents in the associated secret, as defined by the `name` attribute.
+      accessKeySecret:
+        name: minio-creds-secret
+        key: accesskey
+      secretKeySecret:
+        name: minio-creds-secret
+        key: secretkey
+      insecure: true
+      bucket: argo-artifacts
+      endpoint: minio.tooling:9000
+
 lethe:
   secretStores:
-    - name: minio-secret-backend
+    - name: k8s-secret-backend
       providers:
         vault:
           server: "http://vault.tooling.svc:8200"
@@ -19,7 +64,7 @@ lethe:
   secrets:
     - name: minio-creds-secret
       secretStore:
-        backend: minio-secret-backend
+        backend: k8s-secret-backend
         kind: SecretStore
       target:
         name: minio-creds-secret
@@ -32,3 +77,19 @@ lethe:
           remoteRef:
             key: secrets/minio
             property: secretkey
+
+    - name: argowf-sso
+      secretStore:
+        backend: k8s-secret-backend
+        kind: SecretStore
+      target:
+        name: argowf-sso
+      data:
+        - secretKey: clientid
+          remoteRef:
+            key: secrets/sso
+            property: clientid
+        - secretKey: clientsecret
+          remoteRef:
+            key: secrets/sso
+            property: clientsecret
