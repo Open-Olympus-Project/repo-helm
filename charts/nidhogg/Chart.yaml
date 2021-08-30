@@ -2,7 +2,7 @@ apiVersion: v2
 name: nidhogg
 description: A proxy chart for nidhogg
 type: application
-version: 1.0.2
+version: 1.0.3
 
 maintainers:
   - name: MadsHT
