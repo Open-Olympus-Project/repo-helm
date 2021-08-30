@@ -330,6 +330,21 @@ entries:
     version: 0.0.1
   nidhogg:
   - apiVersion: v2
+    created: "2021-08-30T10:30:07.804016401Z"
+    dependencies:
+    - name: nidhogg
+      repository: https://distributed-technologies.github.io/helm-repository/
+      version: v1.0.1
+    description: A proxy chart for nidhogg
+    digest: 42bcafa923b1b4317a3c11201577504450e53c79fb623744d00ddbabf9fdf0ed
+    maintainers:
+    - name: MadsHT
+    name: nidhogg
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/nidhogg-1.0.4/nidhogg-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
     created: "2021-08-30T10:17:42.684967515Z"
     dependencies:
     - name: nidhogg
@@ -673,6 +688,21 @@ entries:
     version: 0.0.1
   yggdrasil:
   - apiVersion: v2
+    created: "2021-08-30T10:30:08.008564375Z"
+    dependencies:
+    - name: lightvessel
+      repository: https://distributed-technologies.github.io/helm-repository/
+      version: v1.0.2
+    description: A Helm chart for deploying services and applications
+    digest: 911daacbc7b25a4504d32f0376f6a8517f0211ed256f6293737d021a5e0ff8da
+    maintainers:
+    - name: MadsHT
+    name: yggdrasil
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-1.0.5/yggdrasil-1.0.5.tgz
+    version: 1.0.5
+  - apiVersion: v2
     created: "2021-08-30T10:17:43.719049427Z"
     dependencies:
     - name: lightvessel
@@ -732,4 +762,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-08-30T10:22:46.208884587Z"
+generated: "2021-08-30T10:30:08.008925776Z"
