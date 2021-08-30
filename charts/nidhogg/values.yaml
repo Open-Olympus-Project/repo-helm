@@ -1,7 +1,7 @@
 nidhogg:
   yggdrasil:
     repoURL: "https://open-olympus-project.github.io/repo-helm"
-    targetRevision: "v1.0.1"
+    targetRevision: "1.0.5"
     containerRegistryUrl: serviceacrpoc.azurecr.io
     ingress:
       hosts:
