@@ -18,7 +18,7 @@ apps:
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
       targetRevision: 0.1.1
-      chart: argo-wf
+      chart: "argo-wf"
       valuesFile: "argowf.yaml"
     ingressRoute:
       entryPoints:
@@ -47,13 +47,13 @@ apps:
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
       targetRevision: 0.1.0
-      chart: argo-events
+      chart: "argo-events"
       valuesFile: "argo-events.yaml"
   - name: vault
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
       targetRevision: 0.0.1
-      chart: vault
+      chart: "vault"
       valuesFile: "vault.yaml"
     ingressRoute:
       entryPoints:
@@ -72,12 +72,12 @@ apps:
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
       targetRevision: 0.0.1
-      chart: external-secrets
+      chart: "external-secrets"
       valuesFile: "external-secrets.yaml"
 
   - name: minio-operator
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
       targetRevision: 0.0.1
-      chart: minio-operator
+      chart: "minio-operator"
       valuesFile: "minio-operator.yaml"
