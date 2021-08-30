@@ -1,6 +1,6 @@
 apiVersion: v2
 name: thanos
-description: A proxy Helm chart for thanos
+description: A proxy chart for thanos
 type: application
 version: 0.1.1
 

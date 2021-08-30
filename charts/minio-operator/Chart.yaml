@@ -1,10 +1,11 @@
 apiVersion: v2
 name: minio-operator
-description: A Helm chart for Kubernetes
-
+description: A proxy chart for minio-operator
 type: application
-version: 0.0.1
-appVersion: "0.0.1"
+version: 0.1.0
+
+maintainers:
+  - name: MadsHT
 
 dependencies:
 - name: minio-operator
