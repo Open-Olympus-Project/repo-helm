@@ -34,7 +34,7 @@ initvault:
 
 vault:
   server:
-   
+
     # Used to define custom readinessProbe settings
     readinessProbe:
       enabled: true

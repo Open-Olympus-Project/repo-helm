@@ -1,8 +1,8 @@
 apiVersion: v2
 name: traefik
-description: A Helm chart for setting up Traefik as ingress controller for Kubernetes
+description: A proxy chart for Traefik
 type: application
-version: 0.2.1
+version: 0.2.2
 
 maintainers:
   - name: MadsHT
