@@ -2,7 +2,7 @@ apiVersion: v2
 name: argo-wf
 description: A proxy chart for argo-workflows
 type: application
-version: 0.1.3
+version: 0.1.4
 
 maintainers:
   - name: MadsHT
