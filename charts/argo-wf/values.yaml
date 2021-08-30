@@ -39,9 +39,9 @@ argo-workflows:
       secretKeySecret:
         name: minio-creds-secret
         key: secretkey
-      insecure: false
+      insecure: true
       bucket: argo-artifacts
-      endpoint: minio.tooling.svc.cluster.local
+      endpoint: minio.tooling.svc.cluster.local:9000
 
 lethe:
   secretStores:

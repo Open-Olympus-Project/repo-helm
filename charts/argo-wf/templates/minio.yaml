@@ -122,7 +122,7 @@ spec:
 
   ## Enable automatic Kubernetes based certificate generation and signing as explained in
   ## https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster
-  requestAutoCert: true
+  requestAutoCert: false
 
   ## Enable S3 specific features such as Bucket DNS which would allow `buckets` to be
   ## accessible as DNS entries of form `<bucketname>.minio.default.svc.cluster.local`
@@ -143,7 +143,7 @@ spec:
   ## for details.
   podManagementPolicy: Parallel
 
-  ## Create users in the Tenant using this field. Make sure to create secrets per user added here. 
+  ## Create users in the Tenant using this field. Make sure to create secrets per user added here.
   ## Secret should follow the format used in `minio-creds-secret`.
   # users:
   #   - name: minio-user1
