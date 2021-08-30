@@ -18,7 +18,7 @@ apps:
   - name: prometheus
     source:
       repoURL: 'https://open-olympus-project.github.io/repo-helm/'
-      targetRevision: 0.1.1
+      targetRevision: 0.1.2
       chart: "prometheus"
       valuesFile: "prometheus.yaml"
     ingressRoute:
@@ -42,7 +42,7 @@ apps:
     source:
       repoURL: 'https://open-olympus-project.github.io/repo-helm/'
       # standard targetRevision is HEAD
-      targetRevision: 0.1.1
+      targetRevision: 0.1.2
       # path to Helm chart in repo. Should be . if Helm chart is in root.
       chart: "thanos"
       # filename of values file that is local right next to this config.yaml file
@@ -51,7 +51,7 @@ apps:
     source:
       repoURL: 'https://open-olympus-project.github.io/repo-helm/'
       # standard targetRevision is HEAD
-      targetRevision: 0.1.0
+      targetRevision: 0.1.1
       # path to Helm chart in repo. Should be . if Helm chart is in root.
       chart: "grafana"
       # filename of values file that is local right next to this config.yaml file
@@ -83,7 +83,7 @@ apps:
     source:
       repoURL: 'https://open-olympus-project.github.io/repo-helm/'
       # standard targetRevision is HEAD
-      targetRevision: 0.0.1
+      targetRevision: 0.1.0
       # path to Helm chart in repo. Should be . if Helm chart is in root.
       chart: "loki-stack"
       # filename of values file that is local right next to this config.yaml file
@@ -92,7 +92,7 @@ apps:
     source:
       repoURL: 'https://open-olympus-project.github.io/repo-helm/'
       # standard targetRevision is HEAD
-      targetRevision: 0.1.0
+      targetRevision: 0.1.1
       # path to Helm chart in repo. Should be . if Helm chart is in root.
       chart: "jaeger-operator"
       # filename of values file that is local right next to this config.yaml file
