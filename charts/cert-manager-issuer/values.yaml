@@ -1,5 +1,5 @@
 # A list of issuers that should be deployed
-issuers: 
+issuers:
 # - name: letsencrypt-prod
 #   enabled: true
 #   kind: ClusterIssuer
