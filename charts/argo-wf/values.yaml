@@ -1,20 +1,20 @@
 argo-workflows:
-  sso:
-    clientId:
-      name: argowf-sso
-      key: clientid
-    clientSecret:
-      name: argowf-sso
-      key: clientsecret
-    rbac:
-      enable: true
-    scopes:
-      - groups
-
   server:
     secure: false
     extraArgs:
       - --auth-mode=sso
+    sso:
+      clientId:
+        name: argowf-sso
+        key: clientid
+      clientSecret:
+        name: argowf-sso
+        key: clientsecret
+      rbac:
+        enable: true
+      scopes:
+        - groups
+
   controller:
     containerRuntimeExecutor: pns
     workflowDefaults:
