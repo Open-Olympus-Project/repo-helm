@@ -2,6 +2,21 @@ apiVersion: v1
 entries:
   argo-events:
   - apiVersion: v2
+    created: "2021-08-30T10:17:41.133561067Z"
+    dependencies:
+    - name: argo-events
+      repository: https://argoproj.github.io/argo-helm
+      version: 1.4.0
+    description: A proxy chart for argo-events
+    digest: 5a6b05eba2ebba58b89a4fe4831bb66243e3107b0accf493d053384b67b8772f
+    maintainers:
+    - name: MadsHT
+    name: argo-events
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/argo-events-0.1.1/argo-events-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2021-08-27T08:03:51.756482915Z"
     dependencies:
@@ -50,6 +65,21 @@ entries:
     version: 0.1.0
   cert-manager:
   - apiVersion: v2
+    created: "2021-08-30T10:17:41.317182499Z"
+    dependencies:
+    - name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.3.1
+    description: A proxy chart for cert-manager
+    digest: 39766e6193c84b7bfaef0bc5f32b5d5c6390f7da38457b4134ab443bf6fff199
+    maintainers:
+    - name: MadsHT
+    name: cert-manager
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/cert-manager-0.1.1/cert-manager-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2021-08-27T08:03:52.019299113Z"
     dependencies:
@@ -65,6 +95,17 @@ entries:
     version: 0.1.0
   cert-manager-issuer:
   - apiVersion: v2
+    created: "2021-08-30T10:17:41.552574783Z"
+    description: A proxy chart for cert-manager-issuer
+    digest: afc5d35ab569724be4d635c55f3420757d618c13fd353540af3d2697aabcb8df
+    maintainers:
+    - name: MadsHT
+    name: cert-manager-issuer
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/cert-manager-issuer-0.1.1/cert-manager-issuer-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2021-08-27T08:03:52.123745223Z"
     description: A Helm chart for Kubernetes
@@ -75,6 +116,21 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/cert-manager-issuer-0.1.0/cert-manager-issuer-0.1.0.tgz
     version: 0.1.0
   external-secrets:
+  - apiVersion: v2
+    created: "2021-08-30T10:17:41.694300256Z"
+    dependencies:
+    - name: external-secrets
+      repository: https://charts.external-secrets.io
+      version: 0.3.3
+    description: A proxy chart for external-secrets-operator
+    digest: 9ca1d1a630e0af94db58ccfa67f40f398c73505e96141ceb5b58b9e9b516f169
+    maintainers:
+    - name: MadsHT
+    name: external-secrets
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/external-secrets-0.1.0/external-secrets-0.1.0.tgz
+    version: 0.1.0
   - apiVersion: v2
     created: "2021-08-27T08:03:52.255129571Z"
     dependencies:
@@ -89,6 +145,21 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/external-secrets-0.0.1/external-secrets-0.0.1.tgz
     version: 0.0.1
   grafana:
+  - apiVersion: v2
+    created: "2021-08-30T10:17:41.852820621Z"
+    dependencies:
+    - name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 5.6.5
+    description: A proxy chart for grafana
+    digest: 4008c47812b7695bfb284079da32947294a8d01f16ae189cd4f53e2ed69cde92
+    maintainers:
+    - name: MadsHT
+    name: grafana
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/grafana-0.1.1/grafana-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2021-08-27T08:03:52.397072052Z"
@@ -105,6 +176,21 @@ entries:
     version: 0.1.0
   jaeger-operator:
   - apiVersion: v2
+    created: "2021-08-30T10:17:41.988977395Z"
+    dependencies:
+    - name: jaeger-operator
+      repository: https://jaegertracing.github.io/helm-charts
+      version: 2.21.0
+    description: A proxy chart for jaeger-operator
+    digest: 73b83dfd7cd293991e46634720e5e6b981cb3c9dbdeeafe6f5ab0d4212a8c382
+    maintainers:
+    - name: MadsHT
+    name: jaeger-operator
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/jaeger-operator-0.1.1/jaeger-operator-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2021-08-27T08:03:52.532460751Z"
     dependencies:
@@ -119,6 +205,17 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/jaeger-operator-0.1.0/jaeger-operator-0.1.0.tgz
     version: 0.1.0
   lethe:
+  - apiVersion: v2
+    created: "2021-08-30T10:17:42.148404227Z"
+    description: A Helm chart that is used to build secret stores and external secrets.
+    digest: a686f566d7b0bb29dcd356c0ad957a18beb0fd8d1e7d782a4c1e42f1abe347ae
+    maintainers:
+    - name: MadsHT
+    name: lethe
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/lethe-0.1.0/lethe-0.1.0.tgz
+    version: 0.1.0
   - apiVersion: v2
     created: "2021-08-27T08:03:52.66157167Z"
     description: A Helm chart that is used to build secret stores and external secrets.
@@ -141,6 +238,26 @@ entries:
     version: 0.0.1
   loki-stack:
   - apiVersion: v2
+    created: "2021-08-30T10:17:42.338253559Z"
+    dependencies:
+    - condition: loki.enabled
+      name: loki
+      repository: https://grafana.github.io/helm-charts
+      version: ^2.6.0
+    - condition: promtail.enabled
+      name: promtail
+      repository: https://grafana.github.io/helm-charts
+      version: ^3.7.0
+    description: A proxy chart for loki and promtail
+    digest: 2dac8e6865e5ccc79d982fbe77c0bd05c76d2d242a654fa1382811f5815d482f
+    maintainers:
+    - name: MadsHT
+    name: loki-stack
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/loki-stack-0.1.0/loki-stack-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
     appVersion: 0.0.1
     created: "2021-08-27T08:03:52.803543152Z"
     dependencies:
@@ -161,6 +278,23 @@ entries:
     version: 0.0.1
   minio-operator:
   - apiVersion: v2
+    created: "2021-08-30T10:17:42.50240572Z"
+    dependencies:
+    - name: minio-operator
+      repository: https://operator.min.io/
+      tags:
+      - storage
+      version: 4.1.8
+    description: A proxy chart for minio-operator
+    digest: 807e9b2cc5731af2c5c77da1414628207c1479f1a706582538a860fd730150fe
+    maintainers:
+    - name: MadsHT
+    name: minio-operator
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/minio-operator-0.1.0/minio-operator-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
     appVersion: 0.0.1
     created: "2021-08-27T08:03:52.937835636Z"
     dependencies:
@@ -177,6 +311,21 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/minio-operator-0.0.1/minio-operator-0.0.1.tgz
     version: 0.0.1
   nidhogg:
+  - apiVersion: v2
+    created: "2021-08-30T10:17:42.684967515Z"
+    dependencies:
+    - name: nidhogg
+      repository: https://distributed-technologies.github.io/helm-repository/
+      version: v1.0.1
+    description: A proxy chart for nidhogg
+    digest: edc61d379f42ca357e63ae05b9e4a5c92b3f61fe146a49fdc6e8c6245862a16d
+    maintainers:
+    - name: MadsHT
+    name: nidhogg
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/nidhogg-1.0.3/nidhogg-1.0.3.tgz
+    version: 1.0.3
   - apiVersion: v2
     created: "2021-08-30T08:56:44.191771263Z"
     dependencies:
@@ -224,6 +373,28 @@ entries:
     version: v1.0.0
   prometheus:
   - apiVersion: v2
+    created: "2021-08-30T10:17:42.830100764Z"
+    dependencies:
+    - name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 14.6.0
+    - condition: standalonePushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.10.1
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.0.2
+    description: A proxy chart for prometheus
+    digest: 191edddd1ecb5701b777146bbf18d8c958af61fc3f03835dabba32ceb8b60a5e
+    maintainers:
+    - name: MadsHT
+    name: prometheus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/prometheus-0.1.3/prometheus-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     created: "2021-08-27T10:34:54.298511503Z"
     dependencies:
     - name: prometheus
@@ -265,6 +436,24 @@ entries:
     version: 0.1.0
   thanos:
   - apiVersion: v2
+    created: "2021-08-30T10:17:43.015548055Z"
+    dependencies:
+    - name: thanos
+      repository: https://kubernetes-charts.banzaicloud.com
+      version: 0.4.5
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.0.2
+    description: A proxy chart for thanos
+    digest: 6efd31b16303164f855be0f6d485297a7b4886969c946c7eda590b4677b55f9c
+    maintainers:
+    - name: MadsHT
+    name: thanos
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/thanos-0.1.3/thanos-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     created: "2021-08-27T10:34:54.415869114Z"
     dependencies:
     - name: thanos
@@ -298,6 +487,21 @@ entries:
     version: 0.1.0
   traefik:
   - apiVersion: v2
+    created: "2021-08-30T10:17:43.1801577Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 9.19.0
+    description: A proxy chart for Traefik
+    digest: 7cadfad88967dcb538d636da98222811101f58357bc4a3c0934fd53cd3f4200c
+    maintainers:
+    - name: MadsHT
+    name: traefik
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/traefik-0.2.2/traefik-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
     created: "2021-08-30T08:56:44.387710888Z"
     dependencies:
     - name: traefik
@@ -327,6 +531,21 @@ entries:
     version: v0.2.0
   traefik-forward-auth:
   - apiVersion: v2
+    created: "2021-08-30T10:17:43.346468183Z"
+    dependencies:
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.0.2
+    description: A proxy chart for traefik-forward-auth
+    digest: ef1a1e8d632e24a4770d4ad3faa6f6cd7d66f1da1dbd273705097d1d4a1e7a77
+    maintainers:
+    - name: MadsHT
+    name: traefik-forward-auth
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/traefik-forward-auth-0.1.1/traefik-forward-auth-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     created: "2021-08-27T08:31:08.163083571Z"
     dependencies:
     - name: lethe
@@ -352,6 +571,21 @@ entries:
     version: 0.0.1
   vault:
   - apiVersion: v2
+    created: "2021-08-30T10:17:43.540410067Z"
+    dependencies:
+    - name: vault
+      repository: https://helm.releases.hashicorp.com
+      version: 0.13.0
+    description: A proxy chart for vault
+    digest: c7f7daa856faae6493801dc1036720a93af6f8ef2eab57cfd16bab02436017ee
+    maintainers:
+    - name: MadsHT
+    name: vault
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/vault-0.1.0/vault-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
     created: "2021-08-27T08:03:53.627946394Z"
     dependencies:
     - name: vault
@@ -365,6 +599,21 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/vault-0.0.1/vault-0.0.1.tgz
     version: 0.0.1
   yggdrasil:
+  - apiVersion: v2
+    created: "2021-08-30T10:17:43.719049427Z"
+    dependencies:
+    - name: lightvessel
+      repository: https://distributed-technologies.github.io/helm-repository/
+      version: v1.0.2
+    description: A Helm chart for deploying services and applications
+    digest: effe803ebc3f30eed9a453f9f751da3114c920a32cdc32481e5f0856a287b1d8
+    maintainers:
+    - name: MadsHT
+    name: yggdrasil
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-1.0.4/yggdrasil-1.0.4.tgz
+    version: 1.0.4
   - apiVersion: v2
     created: "2021-08-30T08:56:44.586997606Z"
     dependencies:
@@ -410,4 +659,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-08-30T08:56:44.587053309Z"
+generated: "2021-08-30T10:17:43.719143628Z"
