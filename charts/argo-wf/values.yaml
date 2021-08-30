@@ -39,10 +39,8 @@ argo-workflows:
       secretKeySecret:
         name: minio-creds-secret
         key: secretkey
-      insecure: true
       bucket: argo-artifacts
       endpoint: minio.tooling:9000
-
 lethe:
   secretStores:
     - name: k8s-secret-backend
