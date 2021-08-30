@@ -178,6 +178,21 @@ entries:
     version: 0.0.1
   nidhogg:
   - apiVersion: v2
+    created: "2021-08-30T08:56:44.191771263Z"
+    dependencies:
+    - name: nidhogg
+      repository: https://distributed-technologies.github.io/helm-repository/
+      version: v1.0.1
+    description: A Helm chart for nidhogg values and dependencies
+    digest: 11185d2940d95e32e87d1a1b369f389889a5fb100dd63906ee06be5f1b381de9
+    maintainers:
+    - name: MadsHT
+    name: nidhogg
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/nidhogg-1.0.2/nidhogg-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
     created: "2021-08-30T08:45:12.521045794Z"
     dependencies:
     - name: nidhogg
@@ -283,6 +298,21 @@ entries:
     version: 0.1.0
   traefik:
   - apiVersion: v2
+    created: "2021-08-30T08:56:44.387710888Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 9.19.0
+    description: A Helm chart for setting up Traefik as ingress controller for Kubernetes
+    digest: 7f09abbcd278fca2da7cd691ba01412adfd790c4fc2272b7ae5d38be932d8598
+    maintainers:
+    - name: MadsHT
+    name: traefik
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/traefik-0.2.1/traefik-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
     created: "2021-08-27T08:03:53.509084303Z"
     dependencies:
     - name: traefik
@@ -336,6 +366,21 @@ entries:
     version: 0.0.1
   yggdrasil:
   - apiVersion: v2
+    created: "2021-08-30T08:56:44.586997606Z"
+    dependencies:
+    - name: lightvessel
+      repository: https://distributed-technologies.github.io/helm-repository/
+      version: v1.0.2
+    description: A Helm chart for deploying services and applications
+    digest: fa89484ab4954b78284f4909fa66e03eba18a5d39d7fb63d85fb3a3201ca5b2b
+    maintainers:
+    - name: MadsHT
+    name: yggdrasil
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-1.0.3/yggdrasil-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
     created: "2021-08-30T08:45:12.717331192Z"
     dependencies:
     - name: lightvessel
@@ -365,4 +410,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-08-30T08:45:12.717358192Z"
+generated: "2021-08-30T08:56:44.587053309Z"
