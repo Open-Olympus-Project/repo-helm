@@ -10,10 +10,10 @@ argo-workflows:
       clientSecret:
         name: argowf-sso
         key: clientsecret
-      rbac:
-        enable: true
       scopes:
-        - groups
+        - openid
+        - profile
+        - email
 
   controller:
     containerRuntimeExecutor: pns
