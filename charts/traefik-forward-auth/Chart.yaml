@@ -2,7 +2,7 @@ apiVersion: v2
 name: traefik-forward-auth
 description: A proxy chart for traefik-forward-auth
 type: application
-version: 0.1.1
+version: 0.1.2
 
 maintainers:
   - name: MadsHT
