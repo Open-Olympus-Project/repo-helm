@@ -32,6 +32,24 @@ entries:
     version: 0.1.0
   argo-wf:
   - apiVersion: v2
+    created: "2021-09-01T11:13:08.167657477Z"
+    dependencies:
+    - name: argo-workflows
+      repository: https://argoproj.github.io/argo-helm
+      version: 0.4.1
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm
+      version: 0.1.0
+    description: A proxy chart for argo-workflows
+    digest: f7b01f09cfff2e66cad61259876b923dc6a78bcbfd009c0dc0a0f02633ba89cc
+    maintainers:
+    - name: MadsHT
+    name: argo-wf
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/argo-wf-0.1.12/argo-wf-0.1.12.tgz
+    version: 0.1.12
+  - apiVersion: v2
     created: "2021-09-01T10:52:54.413791196Z"
     dependencies:
     - name: argo-workflows
@@ -924,4 +942,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-01T10:52:54.413943807Z"
+generated: "2021-09-01T11:13:08.167808078Z"
