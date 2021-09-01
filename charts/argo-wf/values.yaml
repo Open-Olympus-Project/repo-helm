@@ -41,7 +41,7 @@ argo-workflows:
         key: secretkey
       insecure: true
       bucket: argo-artifacts
-      endpoint: minio.tooling
+      endpoint: minio.tooling.svc
 
 lethe:
   secretStores:
