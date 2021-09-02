@@ -216,15 +216,16 @@ lethe:
         kind: SecretStore
       target:
         name: thanos-bucket
-        data:
-          object-store.yaml: |
-            type: AZURE
-            config:
-              storage_account: "{{`{{ .saName | toString }}`}}"
-              storage_account_key: "{{`{{ .saKey | toString }}`}}"
-              container: "thanos"
-              endpoint: ""
-              max_retries: 3
+        template:
+          data:
+            object-store.yaml: |
+              type: AZURE
+              config:
+                storage_account: "{{`{{ .saName | toString }}`}}"
+                storage_account_key: "{{`{{ .saKey | toString }}`}}"
+                container: "thanos"
+                endpoint: ""
+                max_retries: 3
       data:
         - secretKey: saName
           remoteRef:
