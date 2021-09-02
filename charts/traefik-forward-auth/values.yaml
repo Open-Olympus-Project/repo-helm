@@ -57,7 +57,7 @@ lethe:
   secrets:
     - name: sso-secret
       secretStore:
-        backend: ss-secret-store
+        backend: sso-secret-store
         kind: SecretStore
       target:
         name: sso-secret
