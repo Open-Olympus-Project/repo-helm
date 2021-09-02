@@ -586,6 +586,28 @@ entries:
     version: v1.0.0
   prometheus:
   - apiVersion: v2
+    created: "2021-09-02T07:36:39.95267784Z"
+    dependencies:
+    - name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 14.6.0
+    - condition: standalonePushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.10.1
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.0
+    description: A proxy chart for prometheus
+    digest: ffaa738347023c2fd1fe70baa660e585a1d36c2bbf6ea7b81e0c4fe42f7efa8a
+    maintainers:
+    - name: MadsHT
+    name: prometheus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/prometheus-0.1.6/prometheus-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
     created: "2021-09-02T07:25:28.303183832Z"
     dependencies:
     - name: prometheus
@@ -692,6 +714,24 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/prometheus-0.1.0/prometheus-0.1.0.tgz
     version: 0.1.0
   thanos:
+  - apiVersion: v2
+    created: "2021-09-02T07:36:40.164906342Z"
+    dependencies:
+    - name: thanos
+      repository: https://kubernetes-charts.banzaicloud.com
+      version: 0.4.5
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.0
+    description: A proxy chart for thanos
+    digest: 32cb0a30a6d192ac6979a21d7c74e9fd31f632e8877181f836f950552593c52d
+    maintainers:
+    - name: MadsHT
+    name: thanos
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/thanos-0.1.6/thanos-0.1.6.tgz
+    version: 0.1.6
   - apiVersion: v2
     created: "2021-09-02T07:25:28.515132476Z"
     dependencies:
@@ -997,4 +1037,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-02T07:25:28.720612037Z"
+generated: "2021-09-02T07:36:40.165087042Z"
