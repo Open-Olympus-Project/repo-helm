@@ -1,0 +1,28 @@
+{{ $root := .Values }}
+{{ range $ingressRoute, $_ := .Values.ingressRoutes }}
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .name }}-ingress-route
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  {{- with .annotations }}
+{{ . | toYaml | indent 4}}
+  {{- end }}
+spec:
+  entryPoints:
+{{ .entryPoints | toYaml | indent 4 }}
+  routes:
+{{- range .routes}}
+  - kind: {{ .kind }}
+    match: Host(`{{ $root.host }}`) {{ if .match }}{{ printf "%s %s" "&&" .match }}{{ end }}
+    services:
+{{ .services | toYaml | indent 6 }}
+    middlewares:
+{{ .middlewares | toYaml | indent 6 }}
+{{- end }}
+  tls:
+    secretName: {{ .name }}-tls
+{{ end }}
