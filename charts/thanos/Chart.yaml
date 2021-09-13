@@ -14,3 +14,7 @@ dependencies:
 - name: lethe
   version: "0.1.0"
   repository: https://open-olympus-project.github.io/repo-helm/
+- name: janus
+  version: "0.1.1"
+  repository: https://open-olympus-project.github.io/repo-helm/
+  condition: janus.enabled
