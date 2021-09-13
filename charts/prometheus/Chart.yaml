@@ -21,3 +21,4 @@ dependencies:
 - name: janus
   version: "0.1.1"
   repository: https://open-olympus-project.github.io/repo-helm/
+  condition: janus
