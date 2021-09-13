@@ -402,6 +402,19 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/jaeger-operator-0.1.0/jaeger-operator-0.1.0.tgz
     version: 0.1.0
+  janus:
+  - apiVersion: v2
+    created: "2021-09-13T08:47:24.912002891Z"
+    description: A Helm chart that is used to build ingressRoutes, middleware and
+      certificates.
+    digest: 385b4a0f92adbb3740cb3a148fc28031da29641292879ca604cc7dd814167a87
+    maintainers:
+    - name: MadsHT
+    name: janus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/janus-0.1.0/janus-0.1.0.tgz
+    version: 0.1.0
   lethe:
   - apiVersion: v2
     created: "2021-08-30T10:17:42.148404227Z"
@@ -1037,4 +1050,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-02T07:36:40.165087042Z"
+generated: "2021-09-13T08:47:24.912134092Z"
