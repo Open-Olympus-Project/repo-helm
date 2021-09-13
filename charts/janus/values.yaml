@@ -1,10 +1,10 @@
 host: host
 certmanagerIssuer:
-  kind: issuerKind
-  name: issuerName
+  kind: issuer-kind
+  name: issuer-name
 
 ingressRoutes:
-  - name: appName
+  - name: app-name
     # annotations:
     entryPoints:
       - websecure
@@ -14,16 +14,16 @@ ingressRoutes:
       # Without host
       match: PathPrefix(`path`)
       services:
-        - name: serviceName
-          port: portNumber
+        - name: service-name
+          port: port-number
       middlewares:
-        - name: middlewareName
+        - name: middleware-name
           # Optional
-          namespace: middlewareNamespace
+          namespace: middleware-namespace
     certificate:
       enabled: true
 
 middlewares:
-  - name: middlewareName
+  - name: middleware-name
     spec:
       spec
