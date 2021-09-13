@@ -404,6 +404,18 @@ entries:
     version: 0.1.0
   janus:
   - apiVersion: v2
+    created: "2021-09-13T09:02:08.029964629Z"
+    description: A Helm chart that is used to build ingressRoutes, middleware and
+      certificates.
+    digest: 9ffe93b6895f588c4b12e99183ef5680f3a2dee24313112d3b582d68c54cdf1e
+    maintainers:
+    - name: MadsHT
+    name: janus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/janus-0.1.1/janus-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     created: "2021-09-13T08:47:24.912002891Z"
     description: A Helm chart that is used to build ingressRoutes, middleware and
       certificates.
@@ -1050,4 +1062,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-13T08:47:24.912134092Z"
+generated: "2021-09-13T09:02:08.03016524Z"
