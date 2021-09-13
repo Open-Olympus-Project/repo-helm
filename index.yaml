@@ -32,6 +32,28 @@ entries:
     version: 0.1.0
   argo-wf:
   - apiVersion: v2
+    created: "2021-09-13T09:22:48.788747843Z"
+    dependencies:
+    - name: argo-workflows
+      repository: https://argoproj.github.io/argo-helm
+      version: 0.4.1
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm
+      version: 0.1.0
+    - condition: janus
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for argo-workflows
+    digest: d428536fdd5271d595ef8d089d02e96a2f2cf5b30986e9185adf599610c186a1
+    maintainers:
+    - name: MadsHT
+    name: argo-wf
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/argo-wf-0.1.13/argo-wf-0.1.13.tgz
+    version: 0.1.13
+  - apiVersion: v2
     created: "2021-09-01T11:13:08.167657477Z"
     dependencies:
     - name: argo-workflows
@@ -344,6 +366,25 @@ entries:
     version: 0.0.1
   grafana:
   - apiVersion: v2
+    created: "2021-09-13T09:22:48.923606867Z"
+    dependencies:
+    - name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 5.6.5
+    - condition: janus
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for grafana
+    digest: a0d18394ff3496a10fa563cfe2533a31d2b630899e91ad8d12b379b5cde0e0a9
+    maintainers:
+    - name: MadsHT
+    name: grafana
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/grafana-0.1.2/grafana-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2021-08-30T10:17:41.852820621Z"
     dependencies:
     - name: grafana
@@ -373,6 +414,25 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/grafana-0.1.0/grafana-0.1.0.tgz
     version: 0.1.0
   jaeger-operator:
+  - apiVersion: v2
+    created: "2021-09-13T09:22:49.115992044Z"
+    dependencies:
+    - name: jaeger-operator
+      repository: https://jaegertracing.github.io/helm-charts
+      version: 2.21.0
+    - condition: janus
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for jaeger-operator
+    digest: 6a483676d832d268162a4a6c033ccb8cf82164b435dda7049b7aff7868f5161c
+    maintainers:
+    - name: MadsHT
+    name: jaeger-operator
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/jaeger-operator-0.1.2/jaeger-operator-0.1.2.tgz
+    version: 0.1.2
   - apiVersion: v2
     created: "2021-08-30T10:17:41.988977395Z"
     dependencies:
@@ -610,6 +670,32 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/nidhogg-v1.0.0/nidhogg-v1.0.0.tgz
     version: v1.0.0
   prometheus:
+  - apiVersion: v2
+    created: "2021-09-13T09:22:49.287863702Z"
+    dependencies:
+    - name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 14.6.0
+    - condition: standalonePushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.10.1
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.0
+    - condition: janus
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for prometheus
+    digest: 902f0b9fe1a1b759ba7997981f3b363bcb811b60a7dfd3175a78a970c7ea931c
+    maintainers:
+    - name: MadsHT
+    name: prometheus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/prometheus-0.1.8/prometheus-0.1.8.tgz
+    version: 0.1.8
   - apiVersion: v2
     created: "2021-09-02T07:36:39.95267784Z"
     dependencies:
@@ -889,6 +975,25 @@ entries:
     version: v0.2.0
   traefik-forward-auth:
   - apiVersion: v2
+    created: "2021-09-13T09:22:49.432646335Z"
+    dependencies:
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.0
+    - condition: janus
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for traefik-forward-auth
+    digest: c4725bc8f9420a4635eac757ced6aa7d19768843b324eb55a935d2f472809e81
+    maintainers:
+    - name: MadsHT
+    name: traefik-forward-auth
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/traefik-forward-auth-0.1.4/traefik-forward-auth-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
     created: "2021-09-02T07:25:28.720473835Z"
     dependencies:
     - name: lethe
@@ -958,6 +1063,25 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/traefik-forward-auth-0.0.1/traefik-forward-auth-0.0.1.tgz
     version: 0.0.1
   vault:
+  - apiVersion: v2
+    created: "2021-09-13T09:22:49.566503258Z"
+    dependencies:
+    - name: vault
+      repository: https://helm.releases.hashicorp.com
+      version: 0.13.0
+    - condition: janus
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for vault
+    digest: e444651f7ed34e1abd85724171ed8a9995577e2b7145bacd8694046d85ba23bd
+    maintainers:
+    - name: MadsHT
+    name: vault
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/vault-0.1.1/vault-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     created: "2021-08-30T10:17:43.540410067Z"
     dependencies:
@@ -1062,4 +1186,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-13T09:02:08.03016524Z"
+generated: "2021-09-13T09:22:49.566903258Z"
