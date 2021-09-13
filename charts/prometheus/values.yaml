@@ -48,3 +48,29 @@ lethe:
           remoteRef:
             key: secrets/sa-metrics
             property: sa-key
+
+janus:
+  # These will be changed in Yggdrasil
+  host: host
+  certmanagerIssuer:
+    kind: issuer-kind
+    name: issuer-name
+
+  ingressRoutes:
+    - name: prometheus
+      # annotations:
+      entryPoints:
+        - websecure
+      host: host
+      routes:
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/alertmanager`)
+        services:
+          - name: prometheus-alertmanager
+            port: 80
+        middlewares:
+          - name: auth
+            namespace: networking
+      certificate:
+        enabled: true
