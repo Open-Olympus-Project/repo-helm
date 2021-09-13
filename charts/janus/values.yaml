@@ -17,13 +17,13 @@ ingressRoutes:
         - name: service-name
           port: port-number
       middlewares:
-        - name: middleware-name
-          # Optional
-          namespace: middleware-namespace
+        # - name: middleware-name
+        #   # Optional
+        #   namespace: middleware-namespace
     certificate:
       enabled: true
 
 middlewares:
-  - name: middleware-name
-    spec:
-      spec
+  # - name: middleware-name
+  #   spec:
+  #     spec
