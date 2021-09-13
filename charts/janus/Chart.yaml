@@ -1,0 +1,8 @@
+apiVersion: v2
+name: janus
+description: A Helm chart that is used to build ingressRoutes, middleware and certificates.
+type: application
+version: 0.1.0
+
+maintainers:
+  - name: MadsHT

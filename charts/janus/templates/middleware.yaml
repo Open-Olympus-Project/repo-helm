@@ -1,0 +1,11 @@
+{{ range $middleware, $_ := .Values.middlewares }}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ .name }}
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+{{ .spec | toYaml | indent 2 }}
+{{ end }}

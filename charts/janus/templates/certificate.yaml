@@ -1,0 +1,19 @@
+{{ $root := .Values }}
+{{ range $ingressRoute, $_ := .Values.ingressRoutes }}
+  {{ if .certificate.enabled }}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ .name }}-tls
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  dnsNames:
+    - {{ $root.host }}
+  secretName: {{ .name }}-tls
+  issuerRef:
+    kind: {{ $root.certmanagerIssuer.kind }}
+    name: {{ $root.certmanagerIssuer.name }}
+  {{ end }}
+{{ end }}
