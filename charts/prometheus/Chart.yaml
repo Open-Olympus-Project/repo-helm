@@ -2,7 +2,7 @@ apiVersion: v2
 name: prometheus
 description: A proxy chart for prometheus
 type: application
-version: 0.1.6
+version: 0.1.8
 
 maintainers:
   - name: MadsHT
@@ -18,3 +18,7 @@ dependencies:
 - name: lethe
   version: "0.1.0"
   repository: https://open-olympus-project.github.io/repo-helm/
+- name: janus
+  version: "0.1.1"
+  repository: https://open-olympus-project.github.io/repo-helm/
+  condition: janus
