@@ -1,0 +1,20 @@
+apiVersion: v2
+name: oauth2-proxy
+description: A proxy chart for oauth2-proxy
+type: application
+version: 0.1.0
+
+maintainers:
+  - name: MadsHT
+
+dependencies:
+- name: oauth2-proxy
+  version: "4.2.1"
+  repository: https://oauth2-proxy.github.io/manifests
+- name: lethe
+  version: "0.1.0"
+  repository: https://open-olympus-project.github.io/repo-helm/
+- name: janus
+  version: "0.1.1"
+  repository: https://open-olympus-project.github.io/repo-helm/
+  condition: janus.enabled
