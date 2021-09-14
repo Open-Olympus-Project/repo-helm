@@ -20,6 +20,12 @@ VAULT_ADDR=http://$(wget -vO- -nv --ca-certificate /var/run/secrets/kubernetes.i
 
 echo "Vault-0's address is $VAULT_ADDR"
 
+if ! $(vault status -format=json | jq .sealed);
+then
+echo "The vault is already unsealed"
+exit 0
+fi
+
 echo "trying to gen keys from vault-0"
 vault operator init -format=json > /cluster-keys.json || true;
 sleep 5;
@@ -27,7 +33,7 @@ sleep 5;
 #TODO There should be a way to check if the vault has been initialized.
 
 echo "Checking if keys exists"
-if [ -s /cluster-keys.json ]; 
+if [ -s /cluster-keys.json ];
 then
 	echo "Got the keys from vault-0";
 	break;
@@ -43,7 +49,7 @@ for i in `seq 0 $(($VAULTAMOUNT-1))`;
 do
 	VAULT_ADDR=http://$(wget -vO- -nv --ca-certificate /var/run/secrets/kubernetes.io/serviceaccount/ca.crt --header "Authorization: Bearer $KUBE_TOKEN" https://kubernetes.default/api/v1/namespaces/$namespace/pods/vault-$i | jq -r .status.podIP ):8200
 	if [ ! $i == 0 ]
-	then 
+	then
 		echo "Joining vault-$i";
 		if ! vault operator raft join $VAULT0_ADDR;
 		then
@@ -55,7 +61,7 @@ do
 	do
 		echo "Unsealing vault-$i $j";
 		if vault operator unseal $(cat /cluster-keys.json | jq -r ".unseal_keys_b64[$j]");
-		then 
+		then
 			sleep 10;
 		else
 			exit 71;
