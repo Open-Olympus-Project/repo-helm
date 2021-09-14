@@ -2,7 +2,7 @@ apiVersion: v2
 name: vault
 description: A proxy chart for vault
 type: application
-version: 0.1.1
+version: 0.1.2
 
 maintainers:
   - name: MadsHT
@@ -14,4 +14,4 @@ dependencies:
 - name: janus
   version: "0.1.1"
   repository: https://open-olympus-project.github.io/repo-helm/
-  condition: janus
+  condition: janus.enabled
