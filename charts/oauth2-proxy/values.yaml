@@ -1,4 +1,8 @@
-# oauth2-proxy:
+oauth2-proxy:
+  # Oauth client configuration specifics
+  config:
+    # Use an existing secret for OAuth2 credentials (see secret.yaml for required fields)
+    existingSecret: oauth2
 
 lethe:
   secretStores:
