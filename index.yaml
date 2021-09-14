@@ -755,6 +755,28 @@ entries:
     version: v1.0.0
   oauth2-proxy:
   - apiVersion: v2
+    created: "2021-09-14T11:05:10.303096141Z"
+    dependencies:
+    - name: oauth2-proxy
+      repository: https://oauth2-proxy.github.io/manifests
+      version: 4.2.1
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.0
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for oauth2-proxy
+    digest: ac9bfeb08a01ea33895e23037ff334ff1cc3ca7cbd6e7cea8033ba6b8d2d6811
+    maintainers:
+    - name: MadsHT
+    name: oauth2-proxy
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/oauth2-proxy-0.1.1/oauth2-proxy-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     created: "2021-09-14T10:59:31.98483829Z"
     dependencies:
     - name: oauth2-proxy
@@ -1398,4 +1420,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-14T10:59:31.9850161Z"
+generated: "2021-09-14T11:05:10.303304421Z"
