@@ -1215,6 +1215,25 @@ entries:
     version: 0.0.1
   vault:
   - apiVersion: v2
+    created: "2021-09-14T10:10:07.899173987Z"
+    dependencies:
+    - name: vault
+      repository: https://helm.releases.hashicorp.com
+      version: 0.13.0
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for vault
+    digest: f5fb39817c4eba4d687f0807e2f1dd9418e8b61b915e031ae757b1969fb94fbd
+    maintainers:
+    - name: MadsHT
+    name: vault
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/vault-0.1.3/vault-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     created: "2021-09-14T08:33:52.383939776Z"
     dependencies:
     - name: vault
@@ -1356,4 +1375,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-14T08:33:52.384181079Z"
+generated: "2021-09-14T10:10:07.899443589Z"
