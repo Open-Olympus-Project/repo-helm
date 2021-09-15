@@ -32,6 +32,28 @@ entries:
     version: 0.1.0
   argo-wf:
   - apiVersion: v2
+    created: "2021-09-15T12:54:59.47615391Z"
+    dependencies:
+    - name: argo-workflows
+      repository: https://argoproj.github.io/argo-helm
+      version: 0.4.1
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm
+      version: 0.1.1
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for argo-workflows
+    digest: 473a2ce929d64ea8d4ee6ce2f8ec42e4c72243df634b2e55ab22a5234cb1978c
+    maintainers:
+    - name: MadsHT
+    name: argo-wf
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/argo-wf-0.1.15/argo-wf-0.1.15.tgz
+    version: 0.1.15
+  - apiVersion: v2
     created: "2021-09-14T08:33:50.988112667Z"
     dependencies:
     - name: argo-workflows
@@ -358,6 +380,29 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/cert-manager-issuer-0.1.0/cert-manager-issuer-0.1.0.tgz
     version: 0.1.0
   dex:
+  - apiVersion: v2
+    created: "2021-09-15T12:54:59.694028345Z"
+    dependencies:
+    - name: dex
+      repository: https://charts.dexidp.io
+      version: 0.6.3
+    - condition: lethe.enabled
+      name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for dex
+    digest: 709bd713ba5e388266c876d9b92f32ea41d50727cac50f48c0134d6a72819fd5
+    maintainers:
+    - name: MadsHT
+    name: dex
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/dex-0.1.2/dex-0.1.2.tgz
+    version: 0.1.2
   - apiVersion: v2
     created: "2021-09-15T10:32:56.039355884Z"
     dependencies:
@@ -813,6 +858,28 @@ entries:
     version: v1.0.0
   oauth2-proxy:
   - apiVersion: v2
+    created: "2021-09-15T12:54:59.940281815Z"
+    dependencies:
+    - name: oauth2-proxy
+      repository: https://oauth2-proxy.github.io/manifests
+      version: 4.2.1
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for oauth2-proxy
+    digest: f81040607b43c0de209efead738d36b9bb7ad0b15776abd75308c085c6a40da3
+    maintainers:
+    - name: MadsHT
+    name: oauth2-proxy
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/oauth2-proxy-0.1.2/oauth2-proxy-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2021-09-14T11:05:10.303096141Z"
     dependencies:
     - name: oauth2-proxy
@@ -857,6 +924,32 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/oauth2-proxy-0.1.0/oauth2-proxy-0.1.0.tgz
     version: 0.1.0
   prometheus:
+  - apiVersion: v2
+    created: "2021-09-15T12:55:00.17024418Z"
+    dependencies:
+    - name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 14.6.0
+    - condition: standalonePushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.10.1
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for prometheus
+    digest: 1f6f695a92cd06d66c9c5e42b5ad011f2f81b997a68016af136155259a620476
+    maintainers:
+    - name: MadsHT
+    name: prometheus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/prometheus-0.1.10/prometheus-0.1.10.tgz
+    version: 0.1.10
   - apiVersion: v2
     created: "2021-09-14T08:33:51.766851516Z"
     dependencies:
@@ -1039,6 +1132,28 @@ entries:
     version: 0.1.0
   thanos:
   - apiVersion: v2
+    created: "2021-09-15T12:55:00.455017627Z"
+    dependencies:
+    - name: thanos
+      repository: https://kubernetes-charts.banzaicloud.com
+      version: 0.4.5
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for thanos
+    digest: 807329fdeac3080550d70d93febca15c4e087f57d0903191e4169216276c2882
+    maintainers:
+    - name: MadsHT
+    name: thanos
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/thanos-0.1.8/thanos-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
     created: "2021-09-14T08:33:51.972280499Z"
     dependencies:
     - name: thanos
@@ -1209,6 +1324,25 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/traefik-v0.2.0/traefik-v0.2.0.tgz
     version: v0.2.0
   traefik-forward-auth:
+  - apiVersion: v2
+    created: "2021-09-15T12:55:00.681629112Z"
+    dependencies:
+    - name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for traefik-forward-auth
+    digest: f01ec33b3dd8d0c3f2a5d1390d8f121e9ca419797c8fc7b13e529657b7ff8c8e
+    maintainers:
+    - name: MadsHT
+    name: traefik-forward-auth
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/traefik-forward-auth-0.1.6/traefik-forward-auth-0.1.6.tgz
+    version: 0.1.6
   - apiVersion: v2
     created: "2021-09-14T08:33:52.183119156Z"
     dependencies:
@@ -1478,4 +1612,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-15T12:52:19.395639566Z"
+generated: "2021-09-15T12:55:00.68194681Z"
