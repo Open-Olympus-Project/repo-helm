@@ -359,6 +359,29 @@ entries:
     version: 0.1.0
   dex:
   - apiVersion: v2
+    created: "2021-09-15T10:32:56.039355884Z"
+    dependencies:
+    - name: dex
+      repository: https://charts.dexidp.io
+      version: 0.6.3
+    - condition: lethe.enabled
+      name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.0
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for dex
+    digest: 8ff29afc397e111dbb3216a3630e9d76f51415d9d67111cb3a561181ce6509a6
+    maintainers:
+    - name: MadsHT
+    name: dex
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/dex-0.1.1/dex-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     created: "2021-09-15T10:10:40.33919262Z"
     dependencies:
     - name: dex
@@ -1444,4 +1467,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-15T10:10:40.339418324Z"
+generated: "2021-09-15T10:32:56.039543094Z"
