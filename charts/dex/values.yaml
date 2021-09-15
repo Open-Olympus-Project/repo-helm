@@ -1,11 +1,4 @@
-dex:
-  config:
-    # Set it to a valid URL
-    issuer: http://my-issuer-url.com
-
-    # See https://dexidp.io/docs/storage/ for more options
-    storage:
-      type: memory
+# dex:
 
 lethe:
   enabled: false
