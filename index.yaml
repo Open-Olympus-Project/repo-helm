@@ -357,6 +357,30 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/cert-manager-issuer-0.1.0/cert-manager-issuer-0.1.0.tgz
     version: 0.1.0
+  dex:
+  - apiVersion: v2
+    created: "2021-09-15T10:10:40.33919262Z"
+    dependencies:
+    - name: dex
+      repository: https://charts.dexidp.io
+      version: 0.6.3
+    - condition: lethe.enabled
+      name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.0
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for dex
+    digest: fcdc98c7174204629381c259541680e2281f998fb64cd5ec367b97e0bc9e0a32
+    maintainers:
+    - name: MadsHT
+    name: dex
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/dex-0.1.0/dex-0.1.0.tgz
+    version: 0.1.0
   external-secrets:
   - apiVersion: v2
     created: "2021-08-30T10:17:41.694300256Z"
@@ -1420,4 +1444,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-14T11:05:10.303304421Z"
+generated: "2021-09-15T10:10:40.339418324Z"
