@@ -1,0 +1,21 @@
+apiVersion: v2
+name: dex
+description: A proxy chart for dex
+type: application
+version: 0.1.0
+
+maintainers:
+  - name: MadsHT
+
+dependencies:
+- name: dex
+  version: "0.6.3"
+  repository: https://charts.dexidp.io
+- name: lethe
+  version: "0.1.0"
+  repository: https://open-olympus-project.github.io/repo-helm/
+  condition: lethe.enabled
+- name: janus
+  version: "0.1.1"
+  repository: https://open-olympus-project.github.io/repo-helm/
+  condition: janus.enabled
