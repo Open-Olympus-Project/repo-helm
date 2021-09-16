@@ -113,11 +113,11 @@ spec:
         {{- end }}
         - name: config
           secret:
-          {{- if .Values.config.existingSeret -}}
+          {{- if .Values.config.existingSeret }}
             secretName: {{ .Values.config.existingSecret }}
-          {{- else -}}
+          {{- else }}
             secretName: {{ template "loki.fullname" . }}
-          {{- end -}}
+          {{- end }}
 {{- if .Values.extraVolumes }}
 {{ toYaml .Values.extraVolumes | indent 8}}
 {{- end }}
