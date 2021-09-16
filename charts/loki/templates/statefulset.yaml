@@ -113,7 +113,7 @@ spec:
         {{- end }}
         - name: config
           secret:
-          {{- if .Values.config.existingSeret }}
+          {{- if .Values.config.existingSecret }}
             secretName: {{ .Values.config.existingSecret }}
           {{- else }}
             secretName: {{ template "loki.fullname" . }}
