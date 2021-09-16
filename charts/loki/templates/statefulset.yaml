@@ -114,6 +114,7 @@ spec:
         - name: config
           secret:
           {{- if .Values.config.existingSecret }}
+            defaultMode: 420
             secretName: {{ .Values.config.existingSecret }}
           {{- else }}
             secretName: {{ template "loki.fullname" . }}
