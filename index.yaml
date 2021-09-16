@@ -684,6 +684,34 @@ entries:
     version: 0.0.1
   loki-stack:
   - apiVersion: v2
+    created: "2021-09-16T08:36:40.288778866Z"
+    dependencies:
+    - condition: loki.enabled
+      name: loki
+      repository: https://grafana.github.io/helm-charts
+      version: ^2.6.0
+    - condition: promtail.enabled
+      name: promtail
+      repository: https://grafana.github.io/helm-charts
+      version: ^3.7.0
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    - condition: lethe.enabled
+      name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for loki and promtail
+    digest: c364421ecca1ec36292110add1d912abdc2a9531a5d4c09fb9dd1d898c0dd34c
+    maintainers:
+    - name: MadsHT
+    name: loki-stack
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/loki-stack-0.2.1/loki-stack-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
     created: "2021-09-16T08:25:35.970335544Z"
     dependencies:
     - condition: loki.enabled
@@ -1640,4 +1668,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-16T08:25:35.970497757Z"
+generated: "2021-09-16T08:36:40.290421081Z"
