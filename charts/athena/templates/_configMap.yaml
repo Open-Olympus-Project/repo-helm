@@ -1,0 +1,13 @@
+{{- define "athena-cm-job" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.athena.name }}-cm
+  annotations:
+{{ .Values.athena.annotations | toYaml | indent 4 }}
+data:
+{{- range $path, $_ := .Files.Glob "files/**" }}
+  {{ $path | base }}:
+    {{ $.Files.Get $path }}
+{{- end }}
+{{- end }}

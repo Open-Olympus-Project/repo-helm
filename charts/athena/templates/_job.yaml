@@ -1,0 +1,63 @@
+{{- define "athena-job" }}
+{{- $root := .}}
+{{- range $path, $_ := .Files.Glob "files/**" }}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ $path | base | trimSuffix ".sh" }}-job
+  labels:
+    app: {{ $path | base | trimSuffix ".sh" }}-job
+    chart: {{ $root.Chart.Name }}
+    release: {{ $root.Release.Name }}
+    heritage: {{ $root.Release.Service }}
+  name: {{ $path | base | trimSuffix ".sh" }}-job
+  annotations:
+{{ $root.Values.athena.annotations | toYaml | indent 4 }}
+{{- if $root.Values.athena.job.annotations }}
+{{ $root.Values.athena.job.annotations | toYaml | indent 4 }}
+{{- end }}
+spec:
+  template:
+    metadata:
+      labels:
+        app: {{ $path | base | trimSuffix ".sh" }}-job
+        release: {{ $root.Release.Name }}
+{{- if $root.Values.athena.job.podLabels }}
+{{ toYaml $root.Values.athena.job.podLabels | indent 8 }}
+{{- end }}
+{{- if $root.Values.athena.job.podAnnotations }}
+      annotations:
+{{ toYaml $root.Values.athena.job.podAnnotations | indent 8 }}
+{{- end }}
+    spec:
+      restartPolicy: {{ $root.Values.athena.job.restartPolicy }}
+      containers:
+      - name: job-runner
+        image: {{ $root.Values.athena.job.image.repository }}:{{ $root.Values.athena.job.image.tag }}
+        imagePullPolicy: {{ $root.Values.athena.job.imagePullPolicy }}
+        command:
+          - "sh"
+          - "/tmp/scripts/{{ $path | base }}"
+        volumeMounts:
+          - name: script
+            mountPath: /tmp/scripts
+{{- if $root.Values.athena.job.volumeMounts }}
+{{ $root.Values.athena.job.volumeMounts | toYaml | indent 10 }}
+{{- end }}
+        env:
+{{ $root.Values.athena.job.env | toYaml | indent 10 }}
+      terminationGracePeriodSeconds: {{ $root.Values.athena.job.terminationGracePeriodSeconds }}
+      volumes:
+        - name: script
+          configMap:
+            name: {{ $root.Values.athena.name }}-cm
+            defaultMode: 0777
+{{- if $root.Values.athena.job.volumes }}
+{{ $root.Values.athena.job.volumes | toYaml | indent 8 }}
+{{- end }}
+  backoffLimit: {{ $root.Values.athena.job.backoffLimit }}
+  completions: {{ $root.Values.athena.job.completions }}
+  parallelism: {{ $root.Values.athena.job.parallelism }}
+{{- end }}
+{{- end }}

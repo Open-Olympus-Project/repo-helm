@@ -1,0 +1,22 @@
+athena:
+  name: job1
+
+  annotations:
+      "helm.sh/hook": "post-install"
+
+  job:
+    image:
+      repository: alpine
+      tag: latest
+      imagePullPolicy: IfNotPresent
+
+    env: {}
+
+    restartPolicy: OnFailure
+    terminationGracePeriodSeconds: 0
+    backoffLimit: 5
+    completions: 1
+    parallelism: 1
+
+    volumes:
+    volumeMounts:
