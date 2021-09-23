@@ -327,6 +327,18 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/argo-wf-0.1.0/argo-wf-0.1.0.tgz
     version: 0.1.0
+  athena:
+  - apiVersion: v2
+    created: "2021-09-23T07:50:44.417662322Z"
+    description: A library chart that is used to house common components.
+    digest: ccd70c542e1e70030423a954f76e2a655a4c952f23856530e3579ec912cd16c4
+    maintainers:
+    - name: MadsHT
+    name: athena
+    type: library
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/athena-0.1.0-alpha/athena-0.1.0-alpha.tgz
+    version: 0.1.0-alpha
   cert-manager:
   - apiVersion: v2
     created: "2021-08-30T10:17:41.317182499Z"
@@ -1752,4 +1764,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-16T09:08:42.461086416Z"
+generated: "2021-09-23T07:50:44.417885825Z"
