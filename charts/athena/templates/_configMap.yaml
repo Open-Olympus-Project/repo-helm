@@ -1,13 +1,8 @@
-{{- define "athena-cm-job" }}
+{{- define "athena.configmap.yaml" -}}
 apiVersion: v1
 kind: ConfigMap
-metadata:
-  name: {{ .Values.athena.name }}-cm
-  annotations:
-{{ .Values.athena.annotations | toYaml | indent 4 }}
-data:
-{{- range $path, $_ := .Files.Glob "files/**" }}
-  {{ $path | base }}:
-    {{ $.Files.Get $path }}
-{{- end }}
-{{- end }}
+data: {}
+{{- end -}}
+{{- define "athena.configmap" }}
+{{- include "athena.util.merge" (append . "athena.configmap.yaml") -}}
+{{- end -}}

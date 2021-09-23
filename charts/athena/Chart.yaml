@@ -1,8 +1,8 @@
 apiVersion: v2
 name: athena
 description: A library chart that is used to house common components.
-type: application
-version: 0.1.0
+type: library
+version: 0.1.0-alpha
 
 maintainers:
   - name: MadsHT
