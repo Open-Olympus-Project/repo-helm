@@ -1,0 +1,8 @@
+{{- define "athena.job.yaml" }}
+apiVersion: batch/v1
+kind: Job
+spec: {}
+{{- end -}}
+{{- define "athena.job" }}
+{{- include "athena.util.merge" (append . "athena.job.yaml") -}}
+{{- end -}}

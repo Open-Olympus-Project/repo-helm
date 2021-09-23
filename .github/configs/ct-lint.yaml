@@ -13,5 +13,6 @@ validate-chart-schema: false
 validate-maintainers: true
 validate-yaml: true
 exclude-deprecated: true
-excluded-charts: []
+excluded-charts:
+  - "athena"
 
