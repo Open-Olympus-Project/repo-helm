@@ -3,7 +3,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: git-clone-template
-  namespace: argo
 spec:
   entrypoint: git-clone
   templates:

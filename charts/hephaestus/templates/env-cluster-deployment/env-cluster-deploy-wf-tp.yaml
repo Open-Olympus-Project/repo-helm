@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: env-cluster-deploy-wf-tp
-  namespace: argo
 spec:
   entrypoint: env-cluster-deployment
   podGC:
