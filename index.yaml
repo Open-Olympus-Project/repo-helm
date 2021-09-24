@@ -676,6 +676,17 @@ entries:
     version: 0.1.0
   lethe:
   - apiVersion: v2
+    created: "2021-09-24T11:18:25.963488069Z"
+    description: A Helm chart that is used to build secret stores and external secrets.
+    digest: 9d9bcc91cca582e19178da8002ea46a29bae39078969678dde8642013a901c2f
+    maintainers:
+    - name: MadsHT
+    name: lethe
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/lethe-0.1.2/lethe-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2021-09-15T12:52:19.395436564Z"
     description: A Helm chart that is used to build secret stores and external secrets.
     digest: 7e1f94c1bdb30f1cf5ea0e0ddbda4301c55ea8c54fd3bcd52b0bffdb3accdd98
@@ -1787,4 +1798,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-24T10:55:18.713750723Z"
+generated: "2021-09-24T11:18:25.964091673Z"
