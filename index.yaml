@@ -558,6 +558,18 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/grafana-0.1.0/grafana-0.1.0.tgz
     version: 0.1.0
+  hephaestus:
+  - apiVersion: v2
+    created: "2021-09-24T10:43:01.80185875Z"
+    description: A Helm chart Argo workflow
+    digest: fee9b0c041c141ad8ca23d4316fad4d721bb165ede46edfc1a537e7051d6c283
+    maintainers:
+    - name: MadsHT
+    name: hephaestus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/hephaestus-0.1.0/hephaestus-0.1.0.tgz
+    version: 0.1.0
   jaeger-operator:
   - apiVersion: v2
     created: "2021-09-14T08:33:51.371075755Z"
@@ -1764,4 +1776,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-23T07:50:44.417885825Z"
+generated: "2021-09-24T10:43:01.802090153Z"
