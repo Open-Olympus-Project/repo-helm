@@ -2,7 +2,7 @@ apiVersion: v2
 name: loki-stack
 description: A proxy chart for loki and promtail
 type: application
-version: 0.2.4
+version: 0.2.5
 
 maintainers:
   - name: MadsHT
