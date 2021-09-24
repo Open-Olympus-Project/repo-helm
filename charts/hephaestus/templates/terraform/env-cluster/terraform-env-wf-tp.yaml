@@ -3,7 +3,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: terraform-env-wf-tp
-  namespace: argo
 spec:
   entrypoint: terraform-workflow
   podGC:
