@@ -605,6 +605,17 @@ entries:
     version: 0.1.0
   hephaestus:
   - apiVersion: v2
+    created: "2021-09-24T12:16:15.37952781Z"
+    description: A Helm chart Argo workflow
+    digest: 6e5bb9e5b79d0641d9832b6b481cf91f579f96f422b03f8b2fbf102a93f81947
+    maintainers:
+    - name: MadsHT
+    name: hephaestus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/hephaestus-0.1.5/hephaestus-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
     created: "2021-09-24T12:12:51.96392399Z"
     description: A Helm chart Argo workflow
     digest: 6f42fb36f43634343066a492bc7ebb2da1c21428c79148c72905b5672477b824
@@ -1993,4 +2004,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-09-24T12:12:51.964343094Z"
+generated: "2021-09-24T12:16:15.379801715Z"
