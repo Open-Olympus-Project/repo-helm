@@ -1,0 +1,111 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: terraform-env-wf-tp
+  namespace: argo
+spec:
+  entrypoint: terraform-workflow
+  podGC:
+    strategy: OnWorkflowSuccess
+  arguments:
+    parameters:
+      - name: env_cluster_name
+        value: dev
+      - name: service_cluster_name
+        value: dev
+      - name: sp-secret-name
+        value: service-principal
+  templates:
+  - name: terraform-workflow
+    inputs:
+      parameters:
+      - name: service_cluster_name
+        default: "{{`{{workflow.parameters.service_cluster_name}}`}}"
+      - name: env_cluster_name
+        default: "{{`{{workflow.parameters.env_cluster_name}}`}}"
+      - name: resource_group_name
+        default: service-aks-infrastructure-{{`{{workflow.parameters.service_cluster_name}}`}}
+      - name: storage_account_name
+        default: servicetfstate{{`{{workflow.parameters.service_cluster_name}}`}}
+      - name: container_name
+        default: terraformstate
+      - name: key
+        default: "{{`{{workflow.parameters.env_cluster_name}}`}}.tfstate"
+      - name: sp-secret-name
+        default: "{{`{{workflow.parameters.sp-secret-name}}`}}"
+      - name: terraform-path
+        default: "azure/environment"
+      artifacts:
+      - name: repo
+    steps:
+    - - name: azure-terraform-init
+        templateRef:
+          name: terraform-base-tp
+          template: terraform-base
+        arguments:
+          parameters:
+          - name: action
+            value: init
+          - name: args
+            value: -backend-config="storage_account_name={{`{{inputs.parameters.storage_account_name}}`}}" -backend-config="container_name={{`{{inputs.parameters.container_name}}`}}" -backend-config="key={{`{{inputs.parameters.key}}`}}" -backend-config="resource_group_name={{`{{inputs.parameters.resource_group_name}}`}}"
+          - name: terraform-path
+            value: "{{`{{inputs.parameters.terraform-path}}`}}"
+          - name: sp-secret-name
+            value: '{{`{{inputs.parameters.sp-secret-name}}`}}'
+          artifacts:
+          - name: terraform-folder
+            from: "{{`{{inputs.artifacts.repo}}`}}"
+
+    - - name: azure-terraform-plan
+        templateRef:
+          name: terraform-base-tp
+          template: terraform-base
+        arguments:
+          parameters:
+          - name: action
+            value: plan
+          - name: args
+            value: "-lock=false -var=service_cluster_name={{`{{inputs.parameters.service_cluster_name}}`}} -var=environment_name={{`{{inputs.parameters.env_cluster_name}}`}}"
+          - name: terraform-path
+            value: "{{`{{inputs.parameters.terraform-path}}`}}"
+          - name: sp-secret-name
+            value: '{{`{{inputs.parameters.sp-secret-name}}`}}'
+          artifacts:
+          - name: terraform-folder
+            from: "{{`{{steps.azure-terraform-init.outputs.artifacts.terraform-folder}}`}}"
+
+    - - name: azure-terraform-apply
+        templateRef:
+          name: terraform-base-tp
+          template: terraform-base
+        arguments:
+          parameters:
+            - name: action
+              value: apply
+            - name: args
+              value: "-auto-approve -var=service_cluster_name={{`{{inputs.parameters.service_cluster_name}}`}} -var=environment_name={{`{{inputs.parameters.env_cluster_name}}`}}"
+            - name: terraform-path
+              value: "{{`{{inputs.parameters.terraform-path}}`}}"
+            - name: sp-secret-name
+              value: '{{`{{inputs.parameters.sp-secret-name}}`}}'
+          artifacts:
+            - name: terraform-folder
+              from: "{{`{{steps.azure-terraform-init.outputs.artifacts.terraform-folder}}`}}"
+
+    outputs:
+      artifacts:
+      - name: kube-config
+        from: '{{`{{steps.azure-terraform-apply.outputs.artifacts.kube-config}}`}}'
+      - name: values
+        from: '{{`{{steps.azure-terraform-apply.outputs.artifacts.values}}`}}'
+      parameters:
+      - name: fqdn
+        valueFrom:
+          parameter: '{{`{{steps.azure-terraform-apply.outputs.parameters.fqdn}}`}}'
+      - name: cluster_name
+        valueFrom:
+          parameter: '{{`{{steps.azure-terraform-apply.outputs.parameters.cluster_name}}`}}'
+      - name: cluster_fqdn
+        valueFrom:
+          parameter: '{{`{{steps.azure-terraform-apply.outputs.parameters.cluster_fqdn}}`}}'

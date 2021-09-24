@@ -1,0 +1,68 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: terraform-prep-tp
+  namespace: argo
+spec:
+  entrypoint: terraform-prep-steps
+  podGC:
+    strategy: OnWorkflowSuccess
+  arguments:
+    parameters:
+      - name: service_cluster_name
+        value: dev
+      - name: sp-secret-name
+        value: service-principal
+  templates:
+  - name: terraform-prep-steps
+    inputs:
+      parameters:
+      - name: service_cluster_name
+        default: "{{`{{workflow.parameters.service_cluster_name}}`}}"
+      - name: resource_group_name
+        default: service-aks-infrastructure-{{`{{workflow.parameters.service_cluster_name}}`}}
+      - name: storage_account_name
+        default: servicetfstate{{`{{workflow.parameters.service_cluster_name}}`}}
+      - name: sp-secret-name
+        default: "{{`{{workflow.parameters.sp-secret-name}}`}}"
+      - name: repo
+        default: git@github.com:Open-Dataplatform/k8s-platform.git
+    steps:
+    - - name: git-clone-terraform
+        templateRef:
+          name: git-clone-template
+          template: git-clone
+        arguments:
+          parameters:
+          - name: ssh-url
+            value: '{{`{{inputs.parameters.repo}}`}}'
+
+      - name: infrastructure-check
+        templateRef:
+          name:  az-base-template
+          template:  az-base
+        arguments:
+          parameters:
+          - name: script
+            value: |
+              if [ ! -z $(az storage account check-name -n {{`{{inputs.parameters.storage_account_name}}`}} --query "reason") ]
+              then
+                echo "{{`{{inputs.parameters.storage_account_name}}`}} exists"
+              else
+                echo "{{`{{inputs.parameters.storage_account_name}}`}} does not exist.."
+
+                echo "Creating {{`{{inputs.parameters.resource_group_name}}`}}"
+                az group create -n {{`{{inputs.parameters.resource_group_name}}`}} -l westeurope
+
+                echo "Creating {{`{{inputs.parameters.storage_account_name}}`}}"
+                az storage account create -g {{`{{inputs.parameters.resource_group_name}}`}} -n {{`{{inputs.parameters.storage_account_name}}`}} -l westeurope --sku Standard_LRS
+                az storage container create -n terraformstate --account-name {{`{{inputs.parameters.storage_account_name}}`}}
+              fi
+          - name: sp-secret-name
+            value: '{{`{{inputs.parameters.sp-secret-name}}`}}'
+
+    outputs:
+      artifacts:
+      - name: repo
+        from: '{{`{{steps.git-clone-terraform.outputs.artifacts.repo}}`}}'
