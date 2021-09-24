@@ -12,7 +12,7 @@ dependencies:
   version: "0.6.3"
   repository: https://charts.dexidp.io
 - name: lethe
-  version: "0.1.1"
+  version: "0.1.2"
   repository: https://open-olympus-project.github.io/repo-helm/
   condition: lethe.enabled
 - name: janus
