@@ -24,8 +24,11 @@ spec:
         # ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts;
         # mv /vault/secrets/* ~/.ssh;
         # chmod -R 600 ~/.ssh;
+        ls
         git clone -b "{{`{{inputs.parameters.branch}}`}}" "{{`{{inputs.parameters.ssh-url}}`}}" /repo;
-        sleep 30;
+      volumes:
+        - name: source
+          emptyDir: {}
     outputs:
       artifacts:
       - name: repo
