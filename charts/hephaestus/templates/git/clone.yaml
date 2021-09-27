@@ -25,6 +25,7 @@ spec:
         # mv /vault/secrets/* ~/.ssh;
         # chmod -R 600 ~/.ssh;
         git clone -b "{{`{{inputs.parameters.branch}}`}}" "{{`{{inputs.parameters.ssh-url}}`}}" /repo;
+        sleep 5;
     outputs:
       artifacts:
       - name: repo
