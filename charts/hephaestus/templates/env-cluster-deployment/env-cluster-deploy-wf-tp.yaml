@@ -22,12 +22,9 @@ spec:
           default: "{{`{{workflow.parameters.sp-secret-name}}`}}"
         - name: server-url
           default: "{{ .Values.serverURL }}"
+        - name: sc-name
+          default: "{{ .Values.serviceClusterName }}"
     steps:
-      - - name: get-sc-name
-          templateRef:
-            name: utility-get-sc-name
-            template: get-sc-name
-
       - - name: terraform-prep
           templateRef:
             name: terraform-prep-tp
@@ -35,13 +32,13 @@ spec:
           arguments:
             parameters:
               - name: service_cluster_name
-                value: "{{`{{steps.get-sc-name.outputs.result}}`}}"
+                value: "{{`{{inputs.parameters.sc-name}}`}}"
               - name: sp-secret-name
                 value: "{{`{{inputs.parameters.sp-secret-name}}`}}"
               - name: resource_group_name
-                value: env-aks-infrastructure-{{`{{steps.get-sc-name.outputs.result}}`}}
+                value: env-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
               - name: storage_account_name
-                value: envtfstate{{`{{steps.get-sc-name.outputs.result}}{{inputs.parameters.env_cluster_name}}`}}
+                value: envtfstate{{`{{inputs.parameters.sc-name}}{{inputs.parameters.env_cluster_name}}`}}
 
       - - name: terraform-env
           templateRef:
@@ -50,15 +47,15 @@ spec:
           arguments:
             parameters:
               - name: service_cluster_name
-                value: "{{`{{steps.get-sc-name.outputs.result}}`}}"
+                value: "{{`{{inputs.parameters.sc-name}}`}}"
               - name: env_cluster_name
                 value: "{{`{{inputs.parameters.env_cluster_name}}`}}"
               - name: sp-secret-name
                 value: "{{`{{inputs.parameters.sp-secret-name}}`}}"
               - name: resource_group_name
-                value: env-aks-infrastructure-{{`{{steps.get-sc-name.outputs.result}}`}}
+                value: env-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
               - name: storage_account_name
-                value: envtfstate{{`{{steps.get-sc-name.outputs.result}}{{inputs.parameters.env_cluster_name}}`}}
+                value: envtfstate{{`{{inputs.parameters.sc-name}}{{inputs.parameters.env_cluster_name}}`}}
             artifacts:
               - name: repo
                 from: "{{`{{steps.terraform-prep.outputs.artifacts.repo}}`}}"
