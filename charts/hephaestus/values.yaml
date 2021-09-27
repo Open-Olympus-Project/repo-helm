@@ -2,6 +2,7 @@ serverURL: <URL>
 serviceClusterName: <NAME>
 
 lethe:
+  enabled: true
   secretStores:
     - name: k8s-secret-backend
       providers:
@@ -26,20 +27,6 @@ lethe:
         kind: SecretStore
       target:
         name: minio-creds-secret
-      data:
-        - secretKey: clientid
-          remoteRef:
-            key: service-principals/dataplatform-dev
-            property: clientid
-        - secretKey: clientsecret
-          remoteRef:
-            key: service-principals/dataplatform-dev
-            property: clientsecret
-        - secretKey: subscriptionid
-          remoteRef:
-            key: service-principals/dataplatform-dev
-            property: subscriptionid
-        - secretKey: tenantid
-          remoteRef:
-            key: service-principals/dataplatform-dev
-            property: tenantid
+      dataFrom:
+        - key: service-principals
+          version: 1
