@@ -28,6 +28,5 @@ lethe:
       target:
         name: service-principal-secret
       dataFrom:
-        - key: service-principals
+        - key: service-principals/dataplatform-dev
           version: "1"
-          property: dataplatform-dev
