@@ -1,2 +1,45 @@
 serverURL: <URL>
 serviceClusterName: <NAME>
+
+lethe:
+  secretStores:
+    - name: k8s-secret-backend
+      providers:
+        vault:
+          server: "http://vault.tooling.svc:8200"
+          path: "k8s"
+          version: "v2"
+          auth:
+            # Authenticate against Vault using a Kubernetes ServiceAccount
+            # token stored in a Secret.
+            # https://www.vaultproject.io/docs/auth/kubernetes
+            kubernetes:
+              # Path where the Kubernetes authentication backend is mounted in Vault
+              mountPath: "kubernetes"
+              # A required field containing the Vault Role to assume.
+              role: "k8s-secrets"
+
+  secrets:
+    - name: minio-creds-secret
+      secretStore:
+        backend: k8s-secret-backend
+        kind: SecretStore
+      target:
+        name: minio-creds-secret
+      data:
+        - secretKey: clientid
+          remoteRef:
+            key: service-principals/dataplatform-dev
+            property: clientid
+        - secretKey: clientsecret
+          remoteRef:
+            key: service-principals/dataplatform-dev
+            property: clientsecret
+        - secretKey: subscriptionid
+          remoteRef:
+            key: service-principals/dataplatform-dev
+            property: subscriptionid
+        - secretKey: tenantid
+          remoteRef:
+            key: service-principals/dataplatform-dev
+            property: tenantid
