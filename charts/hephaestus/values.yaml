@@ -21,12 +21,12 @@ lethe:
               role: "k8s-secrets"
 
   secrets:
-    - name: service-principal-secret
+    - name: dataplatform-dev-secret
       secretStore:
         backend: k8s-secret-backend
         kind: SecretStore
       target:
-        name: service-principal-secret
+        name: dataplatform-dev-secret
       dataFrom:
         - key: service-principals/dataplatform-dev
           version: "1"
