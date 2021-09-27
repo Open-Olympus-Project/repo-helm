@@ -31,5 +31,5 @@ spec:
     outputs:
       artifacts:
       - name: repo
-        optional: true
+        optional: false
         path: /repo
