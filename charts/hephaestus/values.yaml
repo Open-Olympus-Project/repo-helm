@@ -4,7 +4,7 @@ serviceClusterName: <NAME>
 lethe:
   enabled: true
   secretStores:
-    - name: k8s-secret-backend
+    - name: k8s-service-principals-backend
       providers:
         vault:
           server: "http://vault.tooling.svc:8200"
@@ -21,7 +21,7 @@ lethe:
               role: "k8s-secrets"
 
   secrets:
-    - name: minio-creds-secret
+    - name: service-principal-secret
       secretStore:
         backend: k8s-secret-backend
         kind: SecretStore
