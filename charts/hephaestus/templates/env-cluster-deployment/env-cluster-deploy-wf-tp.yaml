@@ -11,7 +11,9 @@ spec:
       - name: env_cluster_name
         value: dev
       - name: sp-secret-name
-        value: service-principal
+        value: {{first .Values.servicePrincipalEnums }}
+        enum:
+{{ .Values.servicePrincipalEnums | toYaml | indent 10 }}
   templates:
   - name: env-cluster-deployment
     inputs:
