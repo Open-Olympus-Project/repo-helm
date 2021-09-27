@@ -26,7 +26,7 @@ lethe:
         backend: k8s-secret-backend
         kind: SecretStore
       target:
-        name: minio-creds-secret
+        name: service-principal-secret
       dataFrom:
         - key: service-principals
           version: "1"
