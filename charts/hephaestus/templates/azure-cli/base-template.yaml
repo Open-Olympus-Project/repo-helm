@@ -26,22 +26,22 @@ spec:
 
           {{`{{inputs.parameters.script}}`}}
       env:
-        - name: ARM_CLIENT_ID
+        - name: sp_client_id
           valueFrom:
             secretKeyRef:
               name: '{{`{{inputs.parameters.sp-secret-name}}`}}-secret'
               key: clientid
-        - name: ARM_CLIENT_SECRET
+        - name: sp_client_secret
           valueFrom:
             secretKeyRef:
               name: '{{`{{inputs.parameters.sp-secret-name}}`}}-secret'
               key: clientsecret
-        - name: ARM_SUBSCRIPTION_ID
+        - name: sp_subscription_id
           valueFrom:
             secretKeyRef:
               name: '{{`{{inputs.parameters.sp-secret-name}}`}}-secret'
               key: subscriptionid
-        - name: ARM_TENANT_ID
+        - name: sp_tenant_id
           valueFrom:
             secretKeyRef:
               name: '{{`{{inputs.parameters.sp-secret-name}}`}}-secret'
