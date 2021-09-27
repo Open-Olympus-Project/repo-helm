@@ -29,4 +29,4 @@ lethe:
         name: minio-creds-secret
       dataFrom:
         - key: service-principals
-          version: 1
+          version: "1"
