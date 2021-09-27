@@ -9,7 +9,7 @@ spec:
   - name: git-clone
     inputs:
       parameters:
-      - name: ssh-url
+      - name: url
       - name: branch
         default: HEAD
     container:
@@ -24,7 +24,7 @@ spec:
         ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts;
         # mv /vault/secrets/* ~/.ssh;
         chmod -R 600 ~/.ssh;
-        git clone -b "{{`{{inputs.parameters.branch}}`}}" "{{`{{inputs.parameters.ssh-url}}`}}" /repo;
+        git clone -b "{{`{{inputs.parameters.branch}}`}}" "{{`{{inputs.parameters.url}}`}}" /repo;
       volumes:
         - name: source
           emptyDir: {}
