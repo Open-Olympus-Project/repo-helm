@@ -30,3 +30,4 @@ lethe:
       dataFrom:
         - key: service-principals
           version: "1"
+          property: dataplatform-dev
