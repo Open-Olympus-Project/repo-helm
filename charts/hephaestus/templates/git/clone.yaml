@@ -9,53 +9,25 @@ spec:
   - name: git-clone
     inputs:
       parameters:
-        - name: url
-        - name: branch
-          default: HEAD
-      artifacts:
-      - name: argo-source
-        path: /src
-        git:
-          repo: "{{`{{ inputs.paramethers.url }}`}}"
-          revision: "{{`{{ inputs.paramethers.branch }}`}}"
-          # For private repositories, create a k8s secret containing the git credentials and
-          # reference the secret keys in the secret selectors: usernameSecret, passwordSecret,
-          # or sshPrivateKeySecret.
-          # NOTE: when authenticating via sshPrivateKeySecret, the repo URL should supplied in its
-          # SSH format (e.g. git@github.com:argoproj/argo-workflows.git). Similarly, when authenticating via
-          # basic auth, the URL should be in its HTTP form (e.g. https://github.com/argoproj/argo-workflows.git)
-          # usernameSecret:
-          #   name: github-creds
-          #   key: username
-          # passwordSecret:
-          #   name: github-creds
-          #   key: password
-          # sshPrivateKeySecret:
-          #   name: github-creds
-          #   key: ssh-private-key
-          #
-          # insecureIgnoreHostKey disables SSH strict host key checking during the git clone
-          # NOTE: this is unnecessary for the well-known public SSH keys from the major git
-          # providers (github, bitbucket, gitlab, azure) as these keys are already baked into
-          # the executor image which performs the clone.
-          # insecureIgnoreHostKey: true
-          #
-          # Shallow clones/fetches can be performed by providing a `depth`.
-          # depth: 1
-          #
-          # Additional ref specs to fetch down prior to checkout can be
-          # provided with `fetch`. This may be necessary if `revision` is a
-          # non-branch/-tag ref and thus not covered by git's default fetch.
-          # See https://git-scm.com/book/en/v2/Git-Internals-The-Refspec for
-          # the refspec format.
-          # fetch: refs/meta/*
-          # fetch: refs/changes/*
+      - name: ssh-url
+      - name: branch
+        default: HEAD
     container:
-      image: golang:1.10
-      command: [sh, -c]
-      args: ["git status && ls && cat VERSION"]
-      workingDir: /src
-
+      image: alpine/git
+      command:
+        - /bin/sh
+        - -c
+      args:
+      - >
+        mkdir ~/.ssh;
+        touch ~/.ssh/known_hosts;
+        ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts;
+        # mv /vault/secrets/* ~/.ssh;
+        chmod -R 600 ~/.ssh;
+        git clone -b "{{`{{inputs.parameters.branch}}`}}" "{{`{{inputs.parameters.ssh-url}}`}}" /repo;
+      volumes:
+        - name: source
+          emptyDir: {}
     outputs:
       artifacts:
       - name: repo
