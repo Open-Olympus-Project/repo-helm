@@ -17,18 +17,6 @@ spec:
       - name: terraform-path
       - name: action
       - name: args
-    metadata:
-      annotations:
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/role: "k8s-secrets"
-        vault.hashicorp.com/agent-inject-secret-service-principal: "k8s/data/service-principals/{{`{{inputs.parameters.sp-secret-name}}`}}"
-        vault.hashicorp.com/agent-inject-template-service-principal: |
-          {{`{{ with secret "k8s/data/service-principals/{{inputs.parameters.sp-secret-name}}" -}}
-            export ARM_CLIENT_ID="{{ .Data.data.clientid }}"
-            export ARM_CLIENT_SECRET="{{ .Data.data.clientsecret }}"
-            export ARM_SUBSCRIPTION_ID="{{ .Data.data.subscriptionid }}"
-            export ARM_TENANT_ID="{{ .Data.data.tenantid }}"
-          {{- end }}`}}
     container:
       image: hashicorp/terraform:0.14.11
       command: ["/bin/sh", "-c"]
@@ -37,6 +25,28 @@ spec:
           for f in /vault/secrets/*; do source $f; done;
           terraform {{`{{inputs.parameters.action}}`}} {{`{{inputs.parameters.args}}`}} {{`{{inputs.parameters.terraform-path}}`}}
       workingDir: /src
+      env:
+        - name: ARM_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: '{{inputs.parameters.sp-secret-name}}-secret'
+              key: clientid
+        - name: ARM_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: '{{inputs.parameters.sp-secret-name}}-secret'
+              key: clientsecret
+        - name: ARM_SUBSCRIPTION_ID
+          valueFrom:
+            secretKeyRef:
+              name: '{{inputs.parameters.sp-secret-name}}-secret'
+              key: subscriptionid
+        - name: ARM_TENANT_ID
+          valueFrom:
+            secretKeyRef:
+              name: '{{inputs.parameters.sp-secret-name}}-secret'
+              key: tenantid
+
     outputs:
       artifacts:
       - name: terraform-folder
