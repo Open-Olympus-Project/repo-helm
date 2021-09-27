@@ -30,20 +30,20 @@ spec:
         - name: ARM_CLIENT_ID
           valueFrom:
             secretKeyRef:
-              name: '{{inputs.parameters.sp-secret-name}}-secret'
+              name: '{{`{{inputs.parameters.sp-secret-name}}`}}-secret'
               key: clientid
         - name: ARM_CLIENT_SECRET
           valueFrom:
             secretKeyRef:
-              name: '{{inputs.parameters.sp-secret-name}}-secret'
+              name: '{{`{{inputs.parameters.sp-secret-name}}`}}-secret'
               key: clientsecret
         - name: ARM_SUBSCRIPTION_ID
           valueFrom:
             secretKeyRef:
-              name: '{{inputs.parameters.sp-secret-name}}-secret'
+              name: '{{`{{inputs.parameters.sp-secret-name}}`}}-secret'
               key: subscriptionid
         - name: ARM_TENANT_ID
           valueFrom:
             secretKeyRef:
-              name: '{{inputs.parameters.sp-secret-name}}-secret'
+              name: '{{`{{inputs.parameters.sp-secret-name}}`}}-secret'
               key: tenantid
