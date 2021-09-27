@@ -34,7 +34,7 @@ spec:
           template: git-clone
         arguments:
           parameters:
-          - name: ssh-url
+          - name: url
             value: '{{`{{inputs.parameters.repo}}`}}'
 
       - name: infrastructure-check
