@@ -31,9 +31,11 @@ lethe:
         kind: SecretStore
       target:
         name: odp-github-ssh
-      dataFrom:
-        - key: secrets/github-ssh
-
+      data:
+        - secretKey: id_rsa
+          remoteRef:
+            key: secrets/github-ssh
+            property: sa-name
 
     - name: dataplatform-dev-secret
       secretStore:
