@@ -19,12 +19,9 @@ spec:
         - -c
       args:
       - |
-        echo "Starting git clone"
-        mkdir ~/.ssh;
-        touch ~/.ssh/known_hosts;
+        echo "Starting git clone";
+        ls ~/.ssh
         ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts;
-        # mv /vault/secrets/* ~/.ssh;
-        chmod -R 600 ~/.ssh;
         git clone -b "{{`{{inputs.parameters.branch}}`}}" "{{`{{inputs.parameters.url}}`}}" /repo;
         ls /repo;
       volumeMounts:
