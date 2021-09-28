@@ -11,7 +11,7 @@ spec:
       parameters:
       - name: url
       - name: branch
-        default: HEAD
+        default: main
     container:
       image: alpine/git
       command:
