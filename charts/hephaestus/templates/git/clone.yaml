@@ -24,6 +24,7 @@ spec:
         ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts;
         chmod -R 600 ~/.ssh;
         git clone -b "{{`{{inputs.parameters.branch}}`}}" "{{`{{inputs.parameters.url}}`}}" /repo;
+        echo "Cloned {{`{{inputs.parameters.url}}`}} {{`{{inputs.parameters.branch}}`}}"
       volumeMounts:
         - name: odp-github-ssh
           mountPath: "/ssh-key"

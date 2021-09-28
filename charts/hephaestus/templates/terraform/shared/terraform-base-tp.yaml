@@ -22,7 +22,6 @@ spec:
       command: ["/bin/sh", "-c"]
       args:
         - |
-          for f in /vault/secrets/*; do source $f; done;
           terraform {{`{{inputs.parameters.action}}`}} {{`{{inputs.parameters.args}}`}} {{`{{inputs.parameters.terraform-path}}`}}
       workingDir: /src
       env:
