@@ -22,7 +22,7 @@ spec:
         echo "Starting git clone";
         ls /ssh-key
         mkdir ~/.ssh
-        mv /ssh-key/* ~/.ssh/
+        cp /ssh-key/* ~/.ssh/
         ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts;
         git clone -b "{{`{{inputs.parameters.branch}}`}}" "{{`{{inputs.parameters.url}}`}}" /repo;
         ls /repo;
