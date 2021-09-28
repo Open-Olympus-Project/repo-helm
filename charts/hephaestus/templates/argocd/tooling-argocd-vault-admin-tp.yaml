@@ -40,7 +40,6 @@ spec:
       args:
         - >
           export KUBECONFIG=/.kube/config;
-          source /vault/secrets/argocd;
           argocd login {{`{{inputs.parameters.server-url}}`}} --insecure --username $username --password $password;
           {{`{{inputs.parameters.script}}`}}
       env:
