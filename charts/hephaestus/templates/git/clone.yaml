@@ -20,16 +20,15 @@ spec:
       args:
       - |
         echo "Starting git clone";
-        ls /etc/ssh-key/
+        ls /ssh-key
         mkdir ~/.ssh
-        mv /etc/ssh-key/* ~/.ssh/
+        mv /ssh-key/* ~/.ssh/
         ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts;
         git clone -b "{{`{{inputs.parameters.branch}}`}}" "{{`{{inputs.parameters.url}}`}}" /repo;
         ls /repo;
       volumeMounts:
         - name: odp-github-ssh
-          mountPath: "/etc/ssh-key"
-          subPath: "github"
+          mountPath: "/ssh-key"
     volumes:
       - name: odp-github-ssh
         secret:
