@@ -37,6 +37,22 @@ lethe:
             key: secrets/github-ssh
             property: github
 
+    - name: argocd-creds
+      secretStore:
+        backend: k8s-secret-backend
+        kind: SecretStore
+      target:
+        name: argocd-creds
+      data:
+        - secretKey: username
+          remoteRef:
+            key: secrets/argocd
+            property: adminUsername
+        - secretKey: password
+          remoteRef:
+            key: secrets/argocd
+            property: adminPassword
+
     - name: dataplatform-dev-secret
       secretStore:
         backend: k8s-secret-backend

@@ -7,16 +7,6 @@ spec:
   entrypoint: argocd-base
   templates:
   - name: argocd-base
-    metadata:
-      annotations:
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/role: "k8s-secrets"
-        vault.hashicorp.com/agent-inject-secret-argocd: "k8s/data/secrets/argocd"
-        vault.hashicorp.com/agent-inject-template-argocd: |
-          {{`{{- with secret "k8s/data/secrets/argocd" -}}
-          export username={{ .Data.data.adminUsername }}
-          export password={{ .Data.data.adminPassword }}
-          {{- end -}}`}}
     inputs:
       parameters:
       - name: server-url
@@ -56,3 +46,13 @@ spec:
       env:
       - name: ARGOCD_OPTS
         value: '--grpc-web-root-path /argocd'
+      - name: username
+        valueFrom:
+          secretKeyRef:
+            name: 'argocd-creds'
+            key: username
+      - name: password
+        valueFrom:
+          secretKeyRef:
+            name: 'argocd-creds'
+            key: password
