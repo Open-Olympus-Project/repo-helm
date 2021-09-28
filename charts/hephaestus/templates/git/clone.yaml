@@ -27,9 +27,15 @@ spec:
         chmod -R 600 ~/.ssh;
         git clone -b "{{`{{inputs.parameters.branch}}`}}" "{{`{{inputs.parameters.url}}`}}" /repo;
         ls /repo;
-      volumes:
-        - name: source
-          emptyDir: {}
+      volumeMounts:
+        - name: odp-github-ssh
+          mountPath: "~/.ssh"
+          readOnly: true
+          subPath: "github"
+    volumes:
+      - name: odp-github-ssh
+        secret:
+          secretName: odp-github-ssh
     outputs:
       artifacts:
       - name: repo
