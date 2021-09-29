@@ -26,7 +26,7 @@ spec:
       - name: sp-secret-name
         default: "{{`{{workflow.parameters.sp-secret-name}}`}}"
       - name: repo
-        default: git@github.com:Open-Dataplatform/k8s-platform.git
+        default: git@github.com:Open-Olympus-Project/k8s-platform.git
     steps:
     - - name: git-clone-terraform
         templateRef:
