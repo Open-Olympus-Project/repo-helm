@@ -76,4 +76,4 @@ spec:
               value: '{{`{{inputs.parameters.server-url}}`}}'
             - name: script
               value: |
-                argocd cluster add {{`{{steps.terraform-env.outputs.parameters.cluster_name}}`}};
+                argocd cluster add {{`{{steps.terraform-env.outputs.parameters.cluster_name}}`}} --name {{`{{inputs.parameters.env_cluster_name}}`}};
