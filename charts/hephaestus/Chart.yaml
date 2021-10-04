@@ -2,7 +2,13 @@ apiVersion: v2
 name: hephaestus
 description: A Helm chart Argo workflow
 type: application
-version: 0.1.5
+version: 0.1.6
 
 maintainers:
   - name: MadsHT
+
+dependencies:
+  - name: lethe
+    version: "0.1.2"
+    repository: "https://open-olympus-project.github.io/repo-helm"
+    condition: lethe.enabled

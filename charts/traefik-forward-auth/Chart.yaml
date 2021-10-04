@@ -2,7 +2,7 @@ apiVersion: v2
 name: traefik-forward-auth
 description: A proxy chart for traefik-forward-auth
 type: application
-version: 0.1.7
+version: 0.1.8
 
 maintainers:
   - name: MadsHT
@@ -11,6 +11,7 @@ dependencies:
 - name: lethe
   version: "0.1.2"
   repository: https://open-olympus-project.github.io/repo-helm/
+  condition: lethe.enabled
 - name: janus
   version: "0.1.1"
   repository: https://open-olympus-project.github.io/repo-helm/

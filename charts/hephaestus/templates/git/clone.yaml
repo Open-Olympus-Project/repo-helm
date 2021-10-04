@@ -9,38 +9,31 @@ spec:
   - name: git-clone
     inputs:
       parameters:
-      - name: ssh-url
+      - name: url
       - name: branch
-        default: HEAD
-    metadata:
-      annotations:
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/role: "k8s-secrets"
-        vault.hashicorp.com/agent-inject-secret-id_rsa: "k8s/data/secrets/github-ssh"
-        vault.hashicorp.com/agent-inject-template-id_rsa: |
-          {{`{{- with secret "k8s/data/secrets/github-ssh" -}}
-          {{ .Data.data.github }}
-          {{- end -}}`}}
-        vault.hashicorp.com/agent-inject-secret-id_rsa.pub: "k8s/data/secrets/github-ssh"
-        vault.hashicorp.com/agent-inject-template-id_rsa.pub: |
-          {{`{{- with secret "k8s/data/secrets/github-ssh" -}}
-          {{ .Data.data.githubpub }}
-          {{- end -}}`}}
+        default: main
     container:
       image: alpine/git
       command:
         - /bin/sh
         - -c
       args:
-      - >
-        mkdir ~/.ssh;
-        touch ~/.ssh/known_hosts;
+      - |
+        mkdir ~/.ssh
+        cp /ssh-key/* ~/.ssh/
         ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts;
-        mv /vault/secrets/* ~/.ssh;
         chmod -R 600 ~/.ssh;
-        git clone -b "{{`{{inputs.parameters.branch}}`}}" "{{`{{inputs.parameters.ssh-url}}`}}" /repo;
+        git clone -b "{{`{{inputs.parameters.branch}}`}}" "{{`{{inputs.parameters.url}}`}}" /repo;
+        echo "Cloned {{`{{inputs.parameters.url}}`}} {{`{{inputs.parameters.branch}}`}}"
+      volumeMounts:
+        - name: odp-github-ssh
+          mountPath: "/ssh-key"
+    volumes:
+      - name: odp-github-ssh
+        secret:
+          secretName: odp-github-ssh
     outputs:
       artifacts:
       - name: repo
-        optional: true
+        optional: false
         path: /repo
