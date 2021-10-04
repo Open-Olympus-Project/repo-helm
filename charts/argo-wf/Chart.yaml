@@ -2,7 +2,7 @@ apiVersion: v2
 name: argo-wf
 description: A proxy chart for argo-workflows
 type: application
-version: 0.1.17
+version: 0.1.18
 
 maintainers:
   - name: MadsHT
@@ -14,6 +14,7 @@ dependencies:
 - name: lethe
   version: "0.1.2"
   repository: "https://open-olympus-project.github.io/repo-helm"
+  condition: lethe.enabled
 - name: janus
   version: "0.1.1"
   repository: https://open-olympus-project.github.io/repo-helm/
