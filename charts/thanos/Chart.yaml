@@ -2,7 +2,7 @@ apiVersion: v2
 name: thanos
 description: A proxy chart for thanos
 type: application
-version: 0.1.9
+version: 0.1.10
 
 maintainers:
   - name: MadsHT
@@ -14,6 +14,7 @@ dependencies:
 - name: lethe
   version: "0.1.2"
   repository: https://open-olympus-project.github.io/repo-helm/
+  condition: lethe.enabled
 - name: janus
   version: "0.1.1"
   repository: https://open-olympus-project.github.io/repo-helm/
