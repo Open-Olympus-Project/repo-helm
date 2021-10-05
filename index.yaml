@@ -1363,6 +1363,33 @@ entries:
     version: 0.1.0
   prometheus:
   - apiVersion: v2
+    created: "2021-10-05T08:27:14.228731085Z"
+    dependencies:
+    - name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 14.6.0
+    - condition: prometheus-pushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.10.1
+    - condition: lethe.enabled
+      name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.2
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for prometheus
+    digest: 0a0ad2f0e0428f2078ef268f6dfeeb10000bb8d29d0f98ddb1509ca3defa7b27
+    maintainers:
+    - name: MadsHT
+    name: prometheus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/prometheus-0.1.13/prometheus-0.1.13.tgz
+    version: 0.1.13
+  - apiVersion: v2
     created: "2021-10-04T13:05:50.022484825Z"
     dependencies:
     - name: prometheus
@@ -2187,4 +2214,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-10-04T13:05:50.309534294Z"
+generated: "2021-10-05T08:27:14.229209186Z"
