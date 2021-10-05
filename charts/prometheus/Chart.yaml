@@ -2,7 +2,7 @@ apiVersion: v2
 name: prometheus
 description: A proxy chart for prometheus
 type: application
-version: 0.1.12
+version: 0.1.13
 
 maintainers:
   - name: MadsHT
@@ -14,7 +14,7 @@ dependencies:
 - name: prometheus-pushgateway
   version: "1.10.1"
   repository: "https://prometheus-community.github.io/helm-charts"
-  condition: standalonePushgateway.enabled
+  condition: prometheus-pushgateway.enabled
 - name: lethe
   version: "0.1.2"
   repository: https://open-olympus-project.github.io/repo-helm/

@@ -1,7 +1,5 @@
-standalonePushgateway:
+prometheus-pushgateway:
   enabled: false
-
-# prometheus-pushgateway:
 
 # prometheus:
 
