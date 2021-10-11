@@ -776,6 +776,29 @@ entries:
     version: 0.1.0
   jaeger-operator:
   - apiVersion: v2
+    created: "2021-10-11T09:18:21.065294045Z"
+    dependencies:
+    - name: jaeger-operator
+      repository: https://jaegertracing.github.io/helm-charts
+      version: 2.21.0
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    - condition: lethe.enabled
+      name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.2
+    description: A proxy chart for jaeger-operator
+    digest: 5997cbbd36c3a83110231f1a94e71dddefeb5402114ea97efa4d1e6a05fc361f
+    maintainers:
+    - name: MadsHT
+    name: jaeger-operator
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/jaeger-operator-0.1.5/jaeger-operator-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
     created: "2021-10-11T09:05:29.475034011Z"
     dependencies:
     - name: jaeger-operator
@@ -2279,4 +2302,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-10-11T09:12:07.087477744Z"
+generated: "2021-10-11T09:18:21.065968753Z"
