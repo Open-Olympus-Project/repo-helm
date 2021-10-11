@@ -583,6 +583,25 @@ entries:
     version: 0.0.1
   grafana:
   - apiVersion: v2
+    created: "2021-10-11T08:15:59.014121948Z"
+    dependencies:
+    - name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 6.16.13
+    - condition: janus.enabled
+      name: janus
+      repository: https://open-olympus-project.github.io/repo-helm/
+      version: 0.1.1
+    description: A proxy chart for grafana
+    digest: 88fc72eba9d9fb634cdd385173ea80591f5f67b63cf1ce328f023e8e3ef79083
+    maintainers:
+    - name: MadsHT
+    name: grafana
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/grafana-0.1.4/grafana-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
     created: "2021-09-14T08:33:51.175582806Z"
     dependencies:
     - name: grafana
@@ -2214,4 +2233,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-10-05T08:27:14.229209186Z"
+generated: "2021-10-11T08:15:59.01445845Z"
