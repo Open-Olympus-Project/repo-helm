@@ -1932,6 +1932,21 @@ entries:
     version: 0.1.0
   traefik:
   - apiVersion: v2
+    created: "2021-10-13T13:12:46.146558465Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 9.19.0
+    description: A proxy chart for Traefik
+    digest: cf0e9a18e9b85a3d449d1d556921de4375e5a29c17fbbd95a2917a79c75a82df
+    maintainers:
+    - name: MadsHT
+    name: traefik
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/traefik-0.2.4/traefik-0.2.4.tgz
+    version: 0.2.4
+  - apiVersion: v2
     created: "2021-10-13T10:49:57.380654341Z"
     dependencies:
     - name: traefik
@@ -2317,4 +2332,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-10-13T10:49:57.380978543Z"
+generated: "2021-10-13T13:12:46.147037977Z"
