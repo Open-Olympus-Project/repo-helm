@@ -25,3 +25,6 @@ services:
 traefik:
   service:
     enabled: false
+  ports:
+    web:
+      redirectTo: websecure
