@@ -2,7 +2,7 @@ apiVersion: v2
 name: traefik
 description: A proxy chart for Traefik
 type: application
-version: 0.2.3
+version: 0.2.4
 
 maintainers:
   - name: MadsHT
