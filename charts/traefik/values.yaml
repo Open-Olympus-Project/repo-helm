@@ -26,6 +26,6 @@ traefik:
   service:
     enabled: false
   globalArguments:
-    '--entrypoints.web.http.redirections.entryPoint.to=:443',
-    '--entrypoints.web.http.redirections.entrypoint.permanent=true'
-    '--entrypoints.web.http.redirections.entrypoint.priority=10'
+  - '--entrypoints.web.http.redirections.entryPoint.to=:443',
+  - '--entrypoints.web.http.redirections.entrypoint.permanent=true'
+  - '--entrypoints.web.http.redirections.entrypoint.priority=10'
