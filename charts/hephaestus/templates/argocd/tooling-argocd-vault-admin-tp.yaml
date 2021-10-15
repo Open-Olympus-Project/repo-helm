@@ -9,7 +9,7 @@ spec:
   - name: argocd-base
     inputs:
       parameters:
-      - name: server-url
+      - name: argocd-url
       - name: script
       artifacts:
       - name: value
@@ -40,11 +40,9 @@ spec:
       args:
         - >
           export KUBECONFIG=/.kube/config;
-          argocd login {{`{{inputs.parameters.server-url}}`}} --insecure --username $username --password $password;
+          argocd login {{`{{inputs.parameters.argocd-url}}`}} --insecure --username $username --password $password;
           {{`{{inputs.parameters.script}}`}}
       env:
-      - name: ARGOCD_OPTS
-        value: '--grpc-web-root-path /argocd'
       - name: username
         valueFrom:
           secretKeyRef:

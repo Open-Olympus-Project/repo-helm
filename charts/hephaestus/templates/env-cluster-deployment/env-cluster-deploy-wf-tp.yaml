@@ -22,10 +22,12 @@ spec:
           default: "{{`{{workflow.parameters.env_cluster_name}}`}}"
         - name: sp-secret-name
           default: "{{`{{workflow.parameters.sp-secret-name}}`}}"
-        - name: server-url
-          default: "{{ .Values.serverURL }}"
+        - name: argocd-url
+          default: "argocd.{{ .Values.serverURL }}"
         - name: sc-name
           default: "{{ .Values.serviceClusterName }}"
+        - name: dns_zone_name
+          value: "{{ .Values.serverURL }}"
     steps:
       - - name: terraform-prep
           templateRef:
@@ -58,6 +60,8 @@ spec:
                 value: env-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
               - name: storage_account_name
                 value: envtfstate{{`{{inputs.parameters.sc-name}}{{inputs.parameters.env_cluster_name}}`}}
+              - name: dns_zone_name
+                value: "{{`{{inputs.parameters.dns_zone_name}}`}}"
             artifacts:
               - name: repo
                 from: "{{`{{steps.terraform-prep.outputs.artifacts.repo}}`}}"
@@ -72,8 +76,8 @@ spec:
             - name: kube-config
               from: '{{`{{steps.terraform-env.outputs.artifacts.kube-config}}`}}'
             parameters:
-            - name: server-url
-              value: '{{`{{inputs.parameters.server-url}}`}}'
+            - name: argocd-url
+              value: '{{`{{inputs.parameters.argocd-url}}`}}'
             - name: script
               value: |
                 argocd cluster add {{`{{steps.terraform-env.outputs.parameters.cluster_name}}`}} --name {{`{{inputs.parameters.env_cluster_name}}`}};
