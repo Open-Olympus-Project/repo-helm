@@ -15,6 +15,8 @@ spec:
         value: dev
       - name: sp-secret-name
         value: service-principal
+      - name: dns_zone_name
+        value: dataplatform.energinet.dk
   templates:
   - name: terraform-workflow
     inputs:
@@ -35,6 +37,8 @@ spec:
         default: "{{`{{workflow.parameters.sp-secret-name}}`}}"
       - name: terraform-path
         default: "azure/environment"
+      - name: dns_zone_name
+        value: "{{`{{workflow.parameters.dns_zone_name}}`}}"
       artifacts:
       - name: repo
     steps:
@@ -65,7 +69,7 @@ spec:
           - name: action
             value: plan
           - name: args
-            value: "-lock=false -var=service_cluster_name={{`{{inputs.parameters.service_cluster_name}}`}} -var=environment_name={{`{{inputs.parameters.env_cluster_name}}`}}"
+            value: "-lock=false -var=dns_zone_name={{`{{inputs.parameters.dns_zone_name}}`}} -var=service_cluster_name={{`{{inputs.parameters.service_cluster_name}}`}} -var=environment_name={{`{{inputs.parameters.env_cluster_name}}`}}"
           - name: terraform-path
             value: "{{`{{inputs.parameters.terraform-path}}`}}"
           - name: sp-secret-name
@@ -83,7 +87,7 @@ spec:
             - name: action
               value: apply
             - name: args
-              value: "-auto-approve -var=service_cluster_name={{`{{inputs.parameters.service_cluster_name}}`}} -var=environment_name={{`{{inputs.parameters.env_cluster_name}}`}}"
+              value: "-auto-approve -var=dns_zone_name={{`{{inputs.parameters.dns_zone_name}}`}} -var=service_cluster_name={{`{{inputs.parameters.service_cluster_name}}`}} -var=environment_name={{`{{inputs.parameters.env_cluster_name}}`}}"
             - name: terraform-path
               value: "{{`{{inputs.parameters.terraform-path}}`}}"
             - name: sp-secret-name
