@@ -1,0 +1,83 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: env-cluster-deploy-wf-tp
+spec:
+  entrypoint: env-cluster-deployment
+  podGC:
+    strategy: OnWorkflowSuccess
+  arguments:
+    parameters:
+      - name: env_cluster_name
+        value: dev
+      - name: sp-secret-name
+        value: {{first .Values.servicePrincipalEnums }}
+        enum:
+{{ .Values.servicePrincipalEnums | toYaml | indent 10 }}
+  templates:
+  - name: env-cluster-deployment
+    inputs:
+      parameters:
+        - name: env_cluster_name
+          default: "{{`{{workflow.parameters.env_cluster_name}}`}}"
+        - name: sp-secret-name
+          default: "{{`{{workflow.parameters.sp-secret-name}}`}}"
+        - name: argocd-url
+          default: "argocd.{{ .Values.serverURL }}"
+        - name: sc-name
+          default: "{{ .Values.serviceClusterName }}"
+        - name: dns_zone_name
+          value: "{{ .Values.serverURL }}"
+    steps:
+      - - name: terraform-prep
+          templateRef:
+            name: terraform-prep-tp
+            template: terraform-prep-steps
+          arguments:
+            parameters:
+              - name: service_cluster_name
+                value: "{{`{{inputs.parameters.sc-name}}`}}"
+              - name: sp-secret-name
+                value: "{{`{{inputs.parameters.sp-secret-name}}`}}"
+              - name: resource_group_name
+                value: env-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
+              - name: storage_account_name
+                value: envtfstate{{`{{inputs.parameters.sc-name}}{{inputs.parameters.env_cluster_name}}`}}
+
+      - - name: terraform-env
+          templateRef:
+            name: terraform-env-wf-tp
+            template: terraform-workflow
+          arguments:
+            parameters:
+              - name: service_cluster_name
+                value: "{{`{{inputs.parameters.sc-name}}`}}"
+              - name: env_cluster_name
+                value: "{{`{{inputs.parameters.env_cluster_name}}`}}"
+              - name: sp-secret-name
+                value: "{{`{{inputs.parameters.sp-secret-name}}`}}"
+              - name: resource_group_name
+                value: env-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
+              - name: storage_account_name
+                value: envtfstate{{`{{inputs.parameters.sc-name}}{{inputs.parameters.env_cluster_name}}`}}
+              - name: dns_zone_name
+                value: "{{`{{inputs.parameters.dns_zone_name}}`}}"
+            artifacts:
+              - name: repo
+                from: "{{`{{steps.terraform-prep.outputs.artifacts.repo}}`}}"
+
+      # # Adds the new env cluster to the existing argocd in the deploying service cluster.
+      # - - name: argocd-add-cluster
+      #     templateRef:
+      #       name: argocd-vault-admin
+      #       template: argocd-base
+      #     arguments:
+      #       artifacts:
+      #       - name: kube-config
+      #         from: '{{`{{steps.terraform-env.outputs.artifacts.kube-config}}`}}'
+      #       parameters:
+      #       - name: argocd-url
+      #         value: '{{`{{inputs.parameters.argocd-url}}`}}'
+      #       - name: script
+      #         value: |
+      #           argocd cluster add {{`{{steps.terraform-env.outputs.parameters.cluster_name}}`}} --name {{`{{inputs.parameters.env_cluster_name}}`}};
