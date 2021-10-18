@@ -46,7 +46,7 @@ spec:
 
       - - name: terraform-env
           templateRef:
-            name: terraform-env-wf-tp
+            name: terraform-destroy-env-wf-tp
             template: terraform-workflow
           arguments:
             parameters:
