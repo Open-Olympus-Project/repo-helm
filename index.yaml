@@ -693,6 +693,22 @@ entries:
     version: 0.1.0
   hephaestus:
   - apiVersion: v2
+    created: "2021-10-18T11:05:52.521193745Z"
+    dependencies:
+    - condition: lethe.enabled
+      name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm
+      version: 0.1.2
+    description: A Helm chart Argo workflow
+    digest: 27353ff6620204b1c039c4e2f7665892179933f4fc389b7efcad64f49d8e4834
+    maintainers:
+    - name: MadsHT
+    name: hephaestus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/hephaestus-0.1.7/hephaestus-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
     created: "2021-10-04T13:05:49.559128463Z"
     dependencies:
     - condition: lethe.enabled
@@ -1932,6 +1948,21 @@ entries:
     version: 0.1.0
   traefik:
   - apiVersion: v2
+    created: "2021-10-18T11:05:52.718300198Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 9.19.0
+    description: A proxy chart for Traefik
+    digest: d7504eca6f7563d9a9efef747cde7bd17d2680c57d1a0445f042ced9e78c2002
+    maintainers:
+    - name: MadsHT
+    name: traefik
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/traefik-0.2.5/traefik-0.2.5.tgz
+    version: 0.2.5
+  - apiVersion: v2
     created: "2021-10-13T13:12:46.146558465Z"
     dependencies:
     - name: traefik
@@ -2332,4 +2363,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-10-13T13:12:46.147037977Z"
+generated: "2021-10-18T11:05:52.718624903Z"
