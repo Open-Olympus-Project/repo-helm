@@ -69,7 +69,7 @@ spec:
           - name: action
             value: plan
           - name: args
-            value: "-lock=false -var=dns_zone_name={{`{{inputs.parameters.dns_zone_name}}`}} -var=service_cluster_name={{`{{inputs.parameters.service_cluster_name}}`}} -var=environment_name={{`{{inputs.parameters.env_cluster_name}}`}}"
+            value: "-destroy -lock=false -var=dns_zone_name={{`{{inputs.parameters.dns_zone_name}}`}} -var=service_cluster_name={{`{{inputs.parameters.service_cluster_name}}`}} -var=environment_name={{`{{inputs.parameters.env_cluster_name}}`}}"
           - name: terraform-path
             value: "{{`{{inputs.parameters.terraform-path}}`}}"
           - name: sp-secret-name
