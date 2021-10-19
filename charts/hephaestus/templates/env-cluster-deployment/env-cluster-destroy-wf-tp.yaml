@@ -3,7 +3,7 @@ kind: WorkflowTemplate
 metadata:
   name: env-cluster-destroy-wf-tp
 spec:
-  entrypoint: env-cluster-deployment
+  entrypoint: env-cluster-destroy
   podGC:
     strategy: OnWorkflowSuccess
   arguments:
@@ -15,7 +15,7 @@ spec:
         enum:
 {{ .Values.servicePrincipalEnums | toYaml | indent 10 }}
   templates:
-  - name: env-cluster-deployment
+  - name: env-cluster-destroy
     inputs:
       parameters:
         - name: env_cluster_name
@@ -67,14 +67,11 @@ spec:
                 from: "{{`{{steps.terraform-prep.outputs.artifacts.repo}}`}}"
 
       # Deletes the env cluster to in argocd.
-      - - name: argocd-add-cluster
+      - - name: argocd-delete-cluster
           templateRef:
             name: argocd-vault-admin
             template: argocd-base
           arguments:
-            artifacts:
-            - name: kube-config
-              from: '{{`{{steps.terraform-env.outputs.artifacts.kube-config}}`}}'
             parameters:
             - name: argocd-url
               value: '{{`{{inputs.parameters.argocd-url}}`}}'
