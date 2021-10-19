@@ -65,19 +65,3 @@ spec:
             artifacts:
               - name: repo
                 from: "{{`{{steps.terraform-prep.outputs.artifacts.repo}}`}}"
-
-      # # Adds the new env cluster to the existing argocd in the deploying service cluster.
-      # - - name: argocd-add-cluster
-      #     templateRef:
-      #       name: argocd-vault-admin
-      #       template: argocd-base
-      #     arguments:
-      #       artifacts:
-      #       - name: kube-config
-      #         from: '{{`{{steps.terraform-env.outputs.artifacts.kube-config}}`}}'
-      #       parameters:
-      #       - name: argocd-url
-      #         value: '{{`{{inputs.parameters.argocd-url}}`}}'
-      #       - name: script
-      #         value: |
-      #           argocd cluster add {{`{{steps.terraform-env.outputs.parameters.cluster_name}}`}} --name {{`{{inputs.parameters.env_cluster_name}}`}};
