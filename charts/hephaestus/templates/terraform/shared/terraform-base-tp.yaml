@@ -22,7 +22,7 @@ spec:
       command: ["/bin/sh", "-c"]
       args:
         - |
-          terraform {{`{{inputs.parameters.action}}`}} {{`{{inputs.parameters.args}}`}} {{`{{inputs.parameters.terraform-path}}`}}
+          terraform {{`{{inputs.parameters.action}}`}} {{`{{inputs.parameters.args}}`}} {{`{{inputs.parameters.terraform-path}}`}} -no-color
       workingDir: /src
       env:
         - name: ARM_CLIENT_ID
