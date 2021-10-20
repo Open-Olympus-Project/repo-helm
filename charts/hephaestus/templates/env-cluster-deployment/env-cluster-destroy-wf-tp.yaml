@@ -22,6 +22,8 @@ spec:
           default: "{{`{{workflow.parameters.env_cluster_name}}`}}"
         - name: sp-secret-name
           default: "{{`{{workflow.parameters.sp-secret-name}}`}}"
+        - name: storage_account_name
+          value: envtfstate{{`{{inputs.parameters.sc-name}}{{inputs.parameters.env_cluster_name}}`}}
         - name: argocd-url
           default: "argocd.{{ .Values.serverURL }}"
         - name: sc-name
@@ -42,7 +44,7 @@ spec:
               - name: resource_group_name
                 value: env-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
               - name: storage_account_name
-                value: envtfstate{{`{{inputs.parameters.sc-name}}{{inputs.parameters.env_cluster_name}}`}}
+                value: {{`{{inputs.parameters.storage_account_name}}`}}
 
       - - name: terraform-env
           templateRef:
