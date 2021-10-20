@@ -44,7 +44,7 @@ spec:
               - name: resource_group_name
                 value: env-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
               - name: storage_account_name
-                value: {{`{{inputs.parameters.storage_account_name}}`}}
+                value: "{{`{{inputs.parameters.storage_account_name}}`}}"
 
       - - name: terraform-env
           templateRef:
@@ -61,7 +61,7 @@ spec:
               - name: resource_group_name
                 value: env-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
               - name: storage_account_name
-                value: envtfstate{{`{{inputs.parameters.sc-name}}{{inputs.parameters.env_cluster_name}}`}}
+                value: "{{`{{inputs.parameters.storage_account_name}}`}}"
               - name: dns_zone_name
                 value: "{{`{{inputs.parameters.dns_zone_name}}`}}"
             artifacts:
