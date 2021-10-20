@@ -22,6 +22,8 @@ spec:
           default: "{{`{{workflow.parameters.env_cluster_name}}`}}"
         - name: sp-secret-name
           default: "{{`{{workflow.parameters.sp-secret-name}}`}}"
+        - name: resource_group_name
+          value: env-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
         - name: storage_account_name
           value: envtfstate{{`{{inputs.parameters.sc-name}}{{inputs.parameters.env_cluster_name}}`}}
         - name: argocd-url
@@ -42,7 +44,7 @@ spec:
               - name: sp-secret-name
                 value: "{{`{{inputs.parameters.sp-secret-name}}`}}"
               - name: resource_group_name
-                value: env-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
+                value: "{{`{{inputs.parameters.resource_group_name}}`}}"
               - name: storage_account_name
                 value: "{{`{{inputs.parameters.storage_account_name}}`}}"
 
@@ -59,7 +61,7 @@ spec:
               - name: sp-secret-name
                 value: "{{`{{inputs.parameters.sp-secret-name}}`}}"
               - name: resource_group_name
-                value: env-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
+                value: "{{`{{inputs.parameters.resource_group_name}}`}}"
               - name: storage_account_name
                 value: "{{`{{inputs.parameters.storage_account_name}}`}}"
               - name: dns_zone_name
