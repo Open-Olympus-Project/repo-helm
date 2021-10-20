@@ -65,16 +65,3 @@ spec:
             artifacts:
               - name: repo
                 from: "{{`{{steps.terraform-prep.outputs.artifacts.repo}}`}}"
-
-      # Deletes the env cluster to in argocd.
-      - - name: argocd-delete-cluster
-          templateRef:
-            name: argocd-vault-admin
-            template: argocd-base
-          arguments:
-            parameters:
-            - name: argocd-url
-              value: '{{`{{inputs.parameters.argocd-url}}`}}'
-            - name: script
-              value: |
-                argocd cluster delete {{`{{inputs.parameters.env_cluster_name}}`}};
