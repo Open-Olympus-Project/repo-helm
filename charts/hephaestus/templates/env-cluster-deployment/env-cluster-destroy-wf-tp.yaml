@@ -65,3 +65,23 @@ spec:
             artifacts:
               - name: repo
                 from: "{{`{{steps.terraform-prep.outputs.artifacts.repo}}`}}"
+
+      - - name: infrastructure-storage delete
+          templateRef:
+            name:  az-base-template
+            template:  az-base
+          arguments:
+            parameters:
+            - name: script
+              value: |
+                if [ ! -z $(az storage account check-name -n {{`{{inputs.parameters.storage_account_name}}`}} --query "reason") ]
+                then
+                  echo "{{`{{inputs.parameters.storage_account_name}}`}} exists"
+
+                  echo "Deleting {{`{{inputs.parameters.storage_account_name}}`}}"
+                  az storage account delete -g {{`{{inputs.parameters.resource_group_name}}`}} -n {{`{{inputs.parameters.storage_account_name}}`}} -y
+                else
+                  echo "{{`{{inputs.parameters.storage_account_name}}`}} does not exist.."
+                fi
+            - name: sp-secret-name
+              value: '{{`{{inputs.parameters.sp-secret-name}}`}}'
