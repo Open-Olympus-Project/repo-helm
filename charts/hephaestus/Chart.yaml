@@ -2,7 +2,7 @@ apiVersion: v2
 name: hephaestus
 description: A Helm chart Argo workflow
 type: application
-version: 0.1.16
+version: 0.1.17
 
 maintainers:
   - name: MadsHT
