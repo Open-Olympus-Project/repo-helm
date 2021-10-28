@@ -693,6 +693,22 @@ entries:
     version: 0.1.0
   hephaestus:
   - apiVersion: v2
+    created: "2021-10-28T13:22:49.921191898Z"
+    dependencies:
+    - condition: lethe.enabled
+      name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm
+      version: 0.1.2
+    description: A Helm chart Argo workflow
+    digest: c3ac5c13ffa8c2efc6498599807434e4aa10b350bfbf2b784d402eca4c23eff6
+    maintainers:
+    - name: MadsHT
+    name: hephaestus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/hephaestus-0.1.17/hephaestus-0.1.17.tgz
+    version: 0.1.17
+  - apiVersion: v2
     created: "2021-10-20T09:19:39.848719956Z"
     dependencies:
     - condition: lethe.enabled
@@ -2507,4 +2523,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-10-20T09:19:39.84944666Z"
+generated: "2021-10-28T13:22:49.921551594Z"
