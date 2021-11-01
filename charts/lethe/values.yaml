@@ -1,6 +1,9 @@
 secretStores:
   - name: foobar-secret-store
 
+    # Annotations for this secret store
+    annotations:
+
     # provider field contains the configuration to access the provider
     # which contains the secret exactly one provider must be configured.
     providers:
@@ -23,6 +26,9 @@ secretStores:
 
 secrets:
   - name: foobar-secret
+
+    # Annotations for this secret
+    annotations:
 
     # SecretStoreRef defines which SecretStore to use when fetching the secret data
     secretStore: {}

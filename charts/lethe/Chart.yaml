@@ -2,7 +2,11 @@ apiVersion: v2
 name: lethe
 description: A Helm chart that is used to build secret stores and external secrets.
 type: application
-version: 0.1.2
+version: 0.1.3
 
 maintainers:
   - name: MadsHT
+
+annotations:
+  changeLog: |
+    - [0.1.3] removed static annotation - can now be set in the values.yaml
