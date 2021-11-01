@@ -1090,6 +1090,19 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/janus-0.1.0/janus-0.1.0.tgz
     version: 0.1.0
   lethe:
+  - annotations:
+      changeLog: '- [0.1.3] removed static annotation - can now be set in the values.yaml'
+    apiVersion: v2
+    created: "2021-11-01T10:50:13.999168152Z"
+    description: A Helm chart that is used to build secret stores and external secrets.
+    digest: 5065f97770a788f9e650ecdba89cd25e5c641ab206092f45b4eaf70b12666e3d
+    maintainers:
+    - name: MadsHT
+    name: lethe
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/lethe-0.1.3/lethe-0.1.3.tgz
+    version: 0.1.3
   - apiVersion: v2
     created: "2021-09-24T11:18:25.963488069Z"
     description: A Helm chart that is used to build secret stores and external secrets.
@@ -2523,4 +2536,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-10-28T13:22:49.921551594Z"
+generated: "2021-11-01T10:50:14.000104959Z"
