@@ -35,6 +35,8 @@ spec:
         default: "azure/environment"
       - name: dns_zone_name
         value: "{{`{{workflow.parameters.dns_zone_name}}`}}"
+      - name: args
+        default: "-var=service_cluster_name={{`{{workflow.parameters.service_cluster_name}}`}}"
       artifacts:
       - name: repo
     steps:
@@ -65,7 +67,7 @@ spec:
           - name: action
             value: plan
           - name: args
-            value: "-lock=false -var=dns_zone_name={{`{{inputs.parameters.dns_zone_name}}`}} -var=environment_name={{`{{inputs.parameters.env_cluster_name}}`}}"
+            value: "-lock=false {{`{{ inputs.parameters.args }}`}}"
           - name: terraform-path
             value: "{{`{{inputs.parameters.terraform-path}}`}}"
           - name: sp-secret-name
@@ -83,7 +85,7 @@ spec:
             - name: action
               value: apply
             - name: args
-              value: "-auto-approve -var=dns_zone_name={{`{{inputs.parameters.dns_zone_name}}`}} -var=environment_name={{`{{inputs.parameters.env_cluster_name}}`}}"
+              value: "-auto-approve {{`{{ inputs.parameters.args }}`}}"
             - name: terraform-path
               value: "{{`{{inputs.parameters.terraform-path}}`}}"
             - name: sp-secret-name
