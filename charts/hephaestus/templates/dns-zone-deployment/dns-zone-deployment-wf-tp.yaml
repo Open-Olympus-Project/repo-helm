@@ -1,0 +1,65 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: dns-zone-deploy-wf-tp
+spec:
+  entrypoint: dns-zone-deployment
+  podGC:
+    strategy: OnWorkflowSuccess
+  arguments:
+    parameters:
+      - name: dns_zone_name
+        value: dataplatform.dev.com
+      - name: sp-secret-name
+        value: {{first .Values.servicePrincipalEnums }}
+        enum:
+{{ .Values.servicePrincipalEnums | toYaml | indent 10 }}
+  templates:
+  - name: dns-zone-deployment
+    inputs:
+      parameters:
+        - name: sp-secret-name
+          default: "{{`{{workflow.parameters.sp-secret-name}}`}}"
+        - name: sc-name
+          default: "{{ .Values.serviceClusterName }}"
+        - name: dns_zone_name
+          value: "{{ .Values.serverURL }}"
+    steps:
+      - - name: terraform-prep
+          templateRef:
+            name: terraform-prep-tp
+            template: terraform-prep-steps
+          arguments:
+            parameters:
+              - name: service_cluster_name
+                value: "{{`{{inputs.parameters.sc-name}}`}}"
+              - name: sp-secret-name
+                value: "{{`{{inputs.parameters.sp-secret-name}}`}}"
+              - name: resource_group_name
+                value: env-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
+              - name: storage_account_name
+                value: envtfstate{{`{{inputs.parameters.sc-name}}{{inputs.parameters.env_cluster_name}}`}}
+
+      - - name: terraform-dns-zone
+          templateRef:
+            name: tooling-terraform-platform-wf-tp
+            template: terraform-workflow
+          arguments:
+            parameters:
+              - name: service_cluster_name
+                value: "{{`{{inputs.parameters.sc-name}}`}}"
+              - name: sp_secret_name
+                value: "{{`{{inputs.parameters.sp_secret_name}}`}}"
+              - name: resource_group_name
+                value: service-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
+              - name: storage_account_name
+                value: servicetfstate{{`{{inputs.parameters.sc-name}}`}}
+              - name: key
+                value: dns_zone.tfstate
+              - name: terraform-path
+                value: ./azure/dns_zone
+              - name: args
+                value: -var=dns_zone_name={{`{{inputs.parameters.dns_zone_name}}`}} -var=environment_name={{`{{inputs.parameters.sc-name}}`}}
+            artifacts:
+              - name: repo
+                from: "{{`{{steps.terraform-prep.outputs.artifacts.repo}}`}}"

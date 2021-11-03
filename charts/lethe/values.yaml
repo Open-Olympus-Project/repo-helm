@@ -3,7 +3,7 @@ secretStores:
 
     # Annotations for this secret store
     annotations:
-
+      "helm.sh/hook": pre-install,pre-upgrade
     # provider field contains the configuration to access the provider
     # which contains the secret exactly one provider must be configured.
     providers:
