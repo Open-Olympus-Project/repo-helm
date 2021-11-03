@@ -36,9 +36,9 @@ spec:
               - name: sp-secret-name
                 value: "{{`{{inputs.parameters.sp-secret-name}}`}}"
               - name: resource_group_name
-                value: env-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
+                value: service-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}
               - name: storage_account_name
-                value: envtfstate{{`{{inputs.parameters.sc-name}}{{inputs.parameters.env_cluster_name}}`}}
+                value: servicetfstate{{`{{inputs.parameters.sc-name}}`}}
 
       - - name: terraform-dns-zone
           templateRef:
