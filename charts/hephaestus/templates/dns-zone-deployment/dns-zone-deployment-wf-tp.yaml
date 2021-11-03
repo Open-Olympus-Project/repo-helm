@@ -48,7 +48,7 @@ spec:
             parameters:
               - name: service_cluster_name
                 value: "{{`{{inputs.parameters.sc-name}}`}}"
-              - name: sp_secret_name
+              - name: sp-secret-name
                 value: "{{`{{inputs.parameters.sp-secret-name}}`}}"
               - name: resource_group_name
                 value: service-aks-infrastructure-{{`{{inputs.parameters.sc-name}}`}}

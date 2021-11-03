@@ -9,8 +9,6 @@ spec:
     strategy: OnWorkflowSuccess
   arguments:
     parameters:
-      - name: env_cluster_name
-        value: dev
       - name: service_cluster_name
         value: dev
       - name: sp-secret-name
@@ -23,8 +21,6 @@ spec:
       parameters:
       - name: service_cluster_name
         default: "{{`{{workflow.parameters.service_cluster_name}}`}}"
-      - name: env_cluster_name
-        default: "{{`{{workflow.parameters.env_cluster_name}}`}}"
       - name: resource_group_name
         default: service-aks-infrastructure-{{`{{workflow.parameters.service_cluster_name}}`}}
       - name: storage_account_name
@@ -32,7 +28,7 @@ spec:
       - name: container_name
         default: terraformstate
       - name: key
-        default: "{{`{{workflow.parameters.env_cluster_name}}`}}.tfstate"
+        default: "{{`{{workflow.parameters.service_cluster_name}}`}}.tfstate"
       - name: sp-secret-name
         default: "{{`{{workflow.parameters.sp-secret-name}}`}}"
       - name: terraform-path
