@@ -9,7 +9,9 @@ spec:
   arguments:
     parameters:
       - name: dns_zone_name
-        value: dataplatform.dev.com
+        value: "dataplatform.dev.com"
+      - name: sc-name
+        value: "{{ .Values.serviceClusterName }}"
       - name: sp-secret-name
         value: {{first .Values.servicePrincipalEnums }}
         enum:
@@ -21,9 +23,9 @@ spec:
         - name: sp-secret-name
           default: "{{`{{workflow.parameters.sp-secret-name}}`}}"
         - name: sc-name
-          default: "{{ .Values.serviceClusterName }}"
+          default: "{{`{{workflow.parameters.sc-name}}`}}"
         - name: dns_zone_name
-          value: "{{ .Values.serverURL }}"
+          default: "{{`{{workflow.parameters.dns_zone_name}}`}}"
     steps:
       - - name: terraform-prep
           templateRef:
