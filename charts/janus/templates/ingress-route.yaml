@@ -17,7 +17,7 @@ spec:
   routes:
 {{- range .routes}}
   - kind: {{ .kind }}
-    match: Host(`{{ $ingressRoute.host | default $root.host }}`) {{ if .match }}{{ printf "%s %s" "&&" .match }}{{ end }}
+    match: Host(`{{ .host | default $root.host }}`) {{ if .match }}{{ printf "%s %s" "&&" .match }}{{ end }}
     services:
 {{ .services | toYaml | indent 6 }}
     middlewares:
