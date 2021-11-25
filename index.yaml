@@ -1083,6 +1083,21 @@ entries:
   janus:
   - annotations:
       changeLog: |
+        - [0.1.4] added optional host key to Route list that will override the global key
+    apiVersion: v2
+    created: "2021-11-25T14:10:39.064137393Z"
+    description: A Helm chart that is used to build ingressRoutes, middleware and
+      certificates.
+    digest: d32d6fe03c54c8f27e9f2a34ddfb6627f8e38d66c1c39c8dba16d83d73ae936a
+    maintainers:
+    - name: MadsHT
+    name: janus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/janus-0.1.4/janus-0.1.4.tgz
+    version: 0.1.4
+  - annotations:
+      changeLog: |
         - [0.1.2] added optional host key to Route list that will override the global key
     apiVersion: v2
     created: "2021-11-25T13:56:44.088623031Z"
@@ -2581,4 +2596,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-11-25T13:56:44.207135594Z"
+generated: "2021-11-25T14:10:39.064694396Z"
