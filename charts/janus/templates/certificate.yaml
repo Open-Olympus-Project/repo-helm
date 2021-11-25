@@ -11,6 +11,13 @@ metadata:
 spec:
   dnsNames:
     - {{ $root.host }}
+{{- range .routes}}
+{{- with .host }}
+{{- if ne . $root.host}}
+    - {{ . }}
+{{- end }}
+{{- end }}
+{{- end }}
   secretName: {{ .name }}-tls
   issuerRef:
     kind: {{ $root.certmanagerIssuer.kind }}
