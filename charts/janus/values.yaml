@@ -11,7 +11,7 @@ ingressRoutes:
     host: host
     routes:
     - kind: Rule
-      # Without host
+      # host: #optional
       match: PathPrefix(`path`)
       services:
         - name: service-name

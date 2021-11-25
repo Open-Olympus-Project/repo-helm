@@ -2,7 +2,11 @@ apiVersion: v2
 name: janus
 description: A Helm chart that is used to build ingressRoutes, middleware and certificates.
 type: application
-version: 0.1.1
+version: 0.1.2
 
 maintainers:
   - name: MadsHT
+
+annotations:
+  changeLog: |
+    - [0.1.2] added optional host key to Route list that will override the global key
