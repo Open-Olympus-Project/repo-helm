@@ -693,6 +693,22 @@ entries:
     version: 0.1.0
   hephaestus:
   - apiVersion: v2
+    created: "2021-11-25T13:56:43.935016279Z"
+    dependencies:
+    - condition: lethe.enabled
+      name: lethe
+      repository: https://open-olympus-project.github.io/repo-helm
+      version: 0.1.2
+    description: A Helm chart Argo workflow
+    digest: a197db25e1a49a92159fef29cf5e38104744ac63ce99d39277a21cced649e925
+    maintainers:
+    - name: MadsHT
+    name: hephaestus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/hephaestus-0.1.18/hephaestus-0.1.18.tgz
+    version: 0.1.18
+  - apiVersion: v2
     created: "2021-10-28T13:22:49.921191898Z"
     dependencies:
     - condition: lethe.enabled
@@ -1065,6 +1081,21 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/jaeger-operator-0.1.0/jaeger-operator-0.1.0.tgz
     version: 0.1.0
   janus:
+  - annotations:
+      changeLog: |
+        - [0.1.2] added optional host key to Route list that will override the global key
+    apiVersion: v2
+    created: "2021-11-25T13:56:44.088623031Z"
+    description: A Helm chart that is used to build ingressRoutes, middleware and
+      certificates.
+    digest: 81d8d0a5eb993e6ada4e713d6c7c626a432df2eca89fcf63a42d542d3b8e587a
+    maintainers:
+    - name: MadsHT
+    name: janus
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/janus-0.1.3/janus-0.1.3.tgz
+    version: 0.1.3
   - apiVersion: v2
     created: "2021-09-13T09:02:08.029964629Z"
     description: A Helm chart that is used to build ingressRoutes, middleware and
@@ -1090,6 +1121,20 @@ entries:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/janus-0.1.0/janus-0.1.0.tgz
     version: 0.1.0
   lethe:
+  - annotations:
+      changeLog: |
+        - [0.1.3] removed static annotation - can now be set in the values.yaml
+    apiVersion: v2
+    created: "2021-11-25T13:56:44.206639294Z"
+    description: A Helm chart that is used to build secret stores and external secrets.
+    digest: 955eb17f259923caa79bc39d7cb41f503b8c04edaee4c87bf05f52f74920b01e
+    maintainers:
+    - name: MadsHT
+    name: lethe
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/lethe-0.1.4/lethe-0.1.4.tgz
+    version: 0.1.4
   - annotations:
       changeLog: '- [0.1.3] removed static annotation - can now be set in the values.yaml'
     apiVersion: v2
@@ -2536,4 +2581,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-11-01T10:50:14.000104959Z"
+generated: "2021-11-25T13:56:44.207135594Z"
