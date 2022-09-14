@@ -554,6 +554,21 @@ entries:
     version: 0.1.0
   external-secrets:
   - apiVersion: v2
+    created: "2022-09-14T13:12:15.220963285Z"
+    dependencies:
+    - name: external-secrets
+      repository: https://charts.external-secrets.io
+      version: 0.5.9
+    description: A proxy chart for external-secrets-operator
+    digest: 083e40131ffa5b6992c3e79e238e72ed18389de3341bf1bdd6d078521a0397b8
+    maintainers:
+    - name: MadsHT
+    name: external-secrets
+    type: application
+    urls:
+    - https://github.com/Open-Olympus-Project/repo-helm/releases/download/external-secrets-0.2.0/external-secrets-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
     created: "2021-08-30T10:17:41.694300256Z"
     dependencies:
     - name: external-secrets
@@ -2596,4 +2611,4 @@ entries:
     urls:
     - https://github.com/Open-Olympus-Project/repo-helm/releases/download/yggdrasil-v1.0.0/yggdrasil-v1.0.0.tgz
     version: v1.0.0
-generated: "2021-11-25T14:10:39.064694396Z"
+generated: "2022-09-14T13:12:15.221441989Z"
